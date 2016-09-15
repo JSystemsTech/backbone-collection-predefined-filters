@@ -1,0 +1,25 @@
+{
+  "name": "backboneCollectionPredefinedFilters",
+  "main": "dist/backbone-collection-predefined-filters.min.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/JSystemsTech/backbone-collection-predefined-filters",
+  "authors": [
+    "JSystemsTech <jsystemstech@gmail.com>"
+  ],
+  "description": "An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection",
+  "keywords": [
+    "backbone",
+    "backbone-collection",
+    "backbone-collection-predefined-filters",
+    "backbone-filters",
+    "backbone-filtering",
+    "backbone-collection-filters",
+    "backbone-collection-filtering"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
