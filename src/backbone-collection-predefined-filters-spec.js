@@ -1,6 +1,7 @@
 'use strict';
 
 var preDefCollection = require('./backbone-collection-predefined-filters'),
+    MOCK_DATA = require('../test/MOCK_DATA'),
     _ = require('underscore'),
     Backbone = require('backbone');
 var generateTestModel = function(attributes) {
@@ -34,6 +35,13 @@ var getBaseCollection = function(addBasePredefinedFilters) {
     }
     return baseCollection;
 };
+var getMockCollection = function(options) {
+    var models = [];
+    _.each(MOCK_DATA, function(data) {
+        models.push(generateTestModel(data));
+    });
+    return new preDefCollection(models, options);
+};
 var hasModel = function(collection, attributes, checkOriginalModels) {
     var searched = collection.where(attributes);
     if (!_.isUndefined(checkOriginalModels) && checkOriginalModels === true) {
@@ -57,12 +65,28 @@ var filter3 = function(model) {
     var searchStr = 'in 1';
     return model.get('testStrData').toLowerCase().indexOf(searchStr.toLowerCase()) !== -1;
 };
-
 var filter4 = function(model) {
     return filter1(model) || filter2(model);
 };
+var findFemales = function(model) {
+    return model.get('gender') === 'Female';
+};
+var findMales = function(model) {
+    return model.get('gender') === 'Male';
+};
+var findSchoolEmail = function(model) {
+    var searchStr = '.edu';
+    return model.get('email').toLowerCase().indexOf(searchStr.toLowerCase()) !== -1;
+};
+var findGovernmentEmail = function(model) {
+    var searchStr = '.gov';
+    return model.get('email').toLowerCase().indexOf(searchStr.toLowerCase()) !== -1;
+};
+var findSchoolOrGovEmail = function(model) {
+    return findSchoolEmail(model) || findGovernmentEmail(model);
+};
 
-describe('### Testing Predefined Filter Collection Functionality ###', function() {
+describe('### Testing Predefined Filter Collection Functionality with base data ###', function() {
     describe('# Testing base functionality', function() {
         var testCollection_base = getBaseCollection(true);
         var testCollection_base2 = getBaseCollection(true);
@@ -624,5 +648,79 @@ describe('### Testing Predefined Filter Collection Functionality ###', function(
                 expect(hasModel(testCollection_9, modelAttributes.modelC, true)).to.equal(true);
             });
         });
+    });
+});
+describe('### Testing Predefined Filter Collection Functionality with large Mock data ###', function() {
+    describe('# Testing Male/Female Filters', function() {
+        var mockCollection = getMockCollection();
+        var mockCollection2 = getMockCollection();
+        mockCollection.addPredefinedFilter('findMales', findMales, true);
+        mockCollection2.addPredefinedFilter('findFemales', findFemales, true);
+        it('All Personal found', function() {
+            expect(mockCollection.models.length + mockCollection2.models.length).to.equal(1000);
+        });
+        it('Find all Male personal', function() {
+            expect(mockCollection.models.length).to.equal(490);
+        });
+        it('Find all Female personal', function() {
+            expect(mockCollection2.models.length).to.equal(510);
+        });
+        describe('* Original Models is unaffected', function() {
+            it('First Collection Returns expected number of models', function() {
+                expect(mockCollection.originalModels.length).to.equal(1000);
+            });
+            it('Second Collection Returns expected number of models', function() {
+                expect(mockCollection2.originalModels.length).to.equal(1000);
+            });
+        });
+    });
+    describe('# Testing Base Paging', function() {
+
+        var mockCollection = getMockCollection({
+            pagingOptions: {
+                modelsPerPage: 10
+            }
+        });
+        mockCollection.trigger('sync');
+        it('Collection has 100 pages', function() {
+            expect(mockCollection.pagingInfo.pages).to.equal(100);
+        });
+        describe('* First Page Contains Correct models', function() {
+
+            it('First page has 10 models', function() {
+                expect(mockCollection._pages[0].length).to.equal(10);
+            });
+            it('Collection Models has 10', function() {
+                expect(mockCollection.models.length).to.equal(10);
+            });
+            _.each(mockCollection.models, function(model, index) {
+                var matchModel = _.where(mockCollection._pages[0], {
+                    cid: model.cid
+                })[0] !== undefined;
+                it('Returns Expected Model at index ' + index, function() {
+                    expect(matchModel).to.equal(true);
+                });
+            });
+        });
+        describe('* Original Models is unaffected', function() {
+            it('First Collection Returns expected number of models', function() {
+                expect(mockCollection.originalModels.length).to.equal(1000);
+            });
+        });
+        describe('* All data in pages maps back to original Models', function() {
+            _.each(mockCollection._pages, function(page, page_index) {
+                describe('- Verifying page ' + (page_index + 1), function() {
+                    _.each(mockCollection.models, function(model, index) {
+                        var matchModel = _.where(mockCollection.originalModels, {
+                            cid: model.cid
+                        })[0] !== undefined;
+                        it('Returns Expected Model at index ' + index, function() {
+                            expect(matchModel).to.equal(true);
+                        });
+                    });
+                });
+            });
+        });
+
     });
 });

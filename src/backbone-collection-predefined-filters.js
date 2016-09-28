@@ -34,15 +34,21 @@
 }(function(_, Backbone) {
     'use strict';
     var PredefinedFilterCollection = Backbone.PredefinedFilterCollection = Backbone.Collection.extend({
-        initialize: function(models) {
-            this._initializeDefaults(models);
+        initialize: function(models, options) {
+            this.options = options;
             this._initializeCollectionEventListeners();
+            this._initializeDefaults(models);
+            
         },
         _initializeDefaults: function(models) {
             var self = this;
-            this.originalModels = models;
+            var executeFiltersOnInitialize = false;
+            this.originalModels = _.clone(models);
             this.predefinedFilters = {};
             this._predefinedFiltersApplied = false;
+            this._usePaging = false;
+            this._pages = [];
+            this.pagingInfo = {};
             this._appliedPredefinedFilters = {};
             if (!_.isUndefined(this.options)) {
                 if (!_.isUndefined(this.options.predefinedFilters)) {
@@ -51,11 +57,35 @@
                 if (!_.isUndefined(this.options.appliedPredefinedFilters)) {
                     this._appliedPredefinedFilters = this.options.appliedPredefinedFilters;
                 }
+                if (!_.isUndefined(this.options.pagingOptions)) {
+                    this._usePaging = true;
+                    this._pagingOptions = _.defaults(this.options.pagingOptions, {
+                        modelsPerPage: models.length, //Show all models on one page
+                        enableLooping: true,
+                        startPage: 1
+                    });
+                    if (this._pagingOptions.modelsPerPage < 1) {
+                        this._pagingOptions.modelsPerPage = 1;
+                    }
+                    this._currentPage = this._pagingOptions.startPage;
+                }
             }
-            var defaultAppliedPredefinedFilters = {};
             _.each(this.predefinedFilters, function(filter, eventName) {
-                self._appliedPredefinedFilters[eventName] = false;
+                if (_isUndefined(_appliedPredefinedFilters[eventName])) {
+                    self._appliedPredefinedFilters[eventName] = false;
+                } else if (_appliedPredefinedFilters[eventName] === true) {
+                    executeFiltersOnInitialize = true;
+                }
             });
+            if (this._usePaging || executeFiltersOnInitialize) {
+                if (this._usePaging && !executeFiltersOnInitialize) {
+                    console.log('no predefined filters');
+                    this._setPages(models);
+                } else {
+                    this._executeAppliedPredefinedFilters();
+                }
+
+            }
         },
         _initializeCollectionEventListeners: function() {
             this.on('sync update', this._onSyncOrUpdateModel, this);
@@ -67,15 +97,18 @@
             this.on('predefined-filters:apply', this.applyPredefinedFilter, this);
         },
         _onSyncOrUpdateModel: function() {
+            console.log('_onSyncOrUpdateModel');
             this._executeAppliedPredefinedFilters();
         },
         _onAddModel: function(model) {
+            console.log('add');
             if (!_.isUndefined(this.originalModels)) {
                 this.originalModels.push(model);
             }
             this._executeAppliedPredefinedFilters();
         },
         _onRemoveModel: function(model) {
+            console.log('remove');
             if (!_.isUndefined(this.originalModels)) {
                 var index = _.indexOf(this.originalModels, model);
                 this.originalModels.splice(index, 1);
@@ -83,6 +116,7 @@
             this._executeAppliedPredefinedFilters();
         },
         _onChangeModel: function(model) {
+            console.log('change');
             if (!_.isUndefined(this.originalModels)) {
                 var originalModel = _.where(this.originalModels, {
                     cid: model.cid
@@ -100,7 +134,8 @@
             if (_.isUndefined(this.originalModels)) {
                 this.originalModels = this.models;
             } else {
-                this.models = this.originalModels;
+                console.log('resetting models'  + this.originalModels.length); 
+                this.models = _.clone(this.originalModels);
             }
             var filtersToExecute = _.omit(this._appliedPredefinedFilters, function(executeFilter) {
                 return !executeFilter;
@@ -115,13 +150,100 @@
                     self._executeFilter(filter, function() {
                         numberOfFiltersToExecuted++;
                         if (numberOfFiltersToExecuted === numberOfFiltersToExecute) {
+                            self._setPages();
                             self.trigger('predefined-filters:updated');
                         }
                     });
-
                 });
             } else {
                 this._predefinedFiltersApplied = false;
+                console.log('no filters to render');
+                this._setPages();
+            }
+        },
+        _setPages: function(onInitializeModels) {
+            var self = this;
+            var models = this.models;
+            if(!_.isUndefined(onInitializeModels)){
+                models = onInitializeModels;
+            }
+            if (this._usePaging) {
+                console.log('entering set new pages');
+                console.log(this.models.length);
+                var pages = _.range(Math.ceil(models.length / this._pagingOptions.modelsPerPage));
+                this._pages = [];
+                _.each(pages, function(page) {
+                    self._pages.push(models.splice(0, self._pagingOptions.modelsPerPage));
+                    if (page === _.last(pages)) {
+                        console.log('trigger going to page ');
+                        return self.goToPage(self._currentPage, onInitializeModels);
+                    }
+                });
+            }
+        },
+        _nextPageInfo: function() {
+            var nextPage = null;
+            if (this._usePaging) {
+                if (this._pagingOptions.enableLooping && this._currentPage === this._pages.length) {
+                    nextPage = 1;
+                } else if (this._currentPage < this._pages.length) {
+                    nextPage = this._currentPage + 1;
+                }
+            }
+            return nextPage;
+        },
+        _previousPageInfo: function() {
+            var previousPage = null;
+            if (this._usePaging) {
+                if (this._pagingOptions.enableLooping && this._currentPage === 1) {
+                    previousPage = this._pages.length;
+                } else if (this._currentPage > 1) {
+                    previousPage = this._currentPage - 1;
+                }
+            }
+            return previousPage;
+        },
+        _setPagingInfo: function() {
+            if (this._usePaging) {
+                var nextPage = this._nextPageInfo();
+                var previousPage = this._previousPageInfo();
+                this.pagingInfo = {
+                    pages: this._pages.length,
+                    currentPage: this._currentPage,
+                    hasNextPage: nextPage !== null,
+                    hasPreviousPage: previousPage !== null,
+                    nextPage: nextPage,
+                    previousPage: previousPage
+                }
+            }
+        },
+        nextPage: function() {
+            if (this._usePaging && this.pagingInfo.hasNextPage) {
+                this.goToPage(this.pagingInfo.nextPage);
+            }
+        },
+        previousPage: function() {
+            if (this._usePaging && this.pagingInfo.hasPreviousPage) {
+                this.goToPage(this.pagingInfo.previousPage);
+            }
+        },
+        goToPage: function(pageNumber, onInitializeModels) {
+            if (this._usePaging) {
+                if (pageNumber > this._pages.length) {
+                    pageNumber = this._pages.length;
+                } else if (pageNumber < 1) {
+                    pageNumber = 1;
+                }
+                console.log('going to page ' + pageNumber);
+                console.log(this._pages[this._currentPage - 1].length);
+                this._currentPage = pageNumber;
+                this._setPagingInfo();
+                if(!_.isUndefined(onInitializeModels)){
+                    onInitializeModels = this._pages[this._currentPage - 1];
+                }else{
+                    this.models = this._pages[this._currentPage - 1];
+                }
+                this._testNum = this.models.length;
             }
         },
         addPredefinedFilter: function(name, filterFunction, applyImmediately) {
