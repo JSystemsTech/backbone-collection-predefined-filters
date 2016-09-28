@@ -3,7 +3,8 @@
 var preDefCollection = require('./backbone-collection-predefined-filters'),
     MOCK_DATA = require('../test/MOCK_DATA'),
     _ = require('underscore'),
-    Backbone = require('backbone');
+    Backbone = require('backbone'),
+    expect = require('must');
 var generateTestModel = function(attributes) {
     return new Backbone.Model(attributes);
 }
