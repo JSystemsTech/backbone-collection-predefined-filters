@@ -724,4 +724,54 @@ describe('### Testing Predefined Filter Collection Functionality with large Mock
         });
 
     });
+    describe('# Testing Pagination With applied filters', function() {
+
+        var mockCollection = getMockCollection({
+            pagingOptions: {
+                modelsPerPage: 20
+            }
+        });
+        mockCollection.trigger('sync');
+        mockCollection.trigger('predefined-filters:add', 'findMales', findMales, true);
+        it('Collection has 100 pages', function() {
+            expect(mockCollection.pagingInfo.pages).to.equal(25);
+        });
+        describe('* First Page Contains Correct models', function() {
+
+            it('First page has 10 models', function() {
+                expect(mockCollection._pages[0].length).to.equal(20);
+            });
+            it('Collection Models has 10', function() {
+                expect(mockCollection.models.length).to.equal(20);
+            });
+            _.each(mockCollection.models, function(model, index) {
+                var matchModel = _.where(mockCollection._pages[0], {
+                    cid: model.cid
+                })[0] !== undefined;
+                it('Returns Expected Model at index ' + index, function() {
+                    expect(matchModel).to.equal(true);
+                });
+            });
+        });
+        describe('* Original Models is unaffected', function() {
+            it('First Collection Returns expected number of models', function() {
+                expect(mockCollection.originalModels.length).to.equal(1000);
+            });
+        });
+        describe('* All data in pages maps back to original Models', function() {
+            _.each(mockCollection._pages, function(page, page_index) {
+                describe('- Verifying page ' + (page_index + 1), function() {
+                    _.each(mockCollection.models, function(model, index) {
+                        var matchModel = _.where(mockCollection.originalModels, {
+                            cid: model.cid
+                        })[0] !== undefined;
+                        it('Returns Expected Model at index ' + index, function() {
+                            expect(matchModel).to.equal(true);
+                        });
+                    });
+                });
+            });
+        });
+
+    });
 });

@@ -79,7 +79,6 @@
             });
             if (this._usePaging || executeFiltersOnInitialize) {
                 if (this._usePaging && !executeFiltersOnInitialize) {
-                    console.log('no predefined filters');
                     this._setPages(models);
                 } else {
                     this._executeAppliedPredefinedFilters();
@@ -97,18 +96,15 @@
             this.on('predefined-filters:apply', this.applyPredefinedFilter, this);
         },
         _onSyncOrUpdateModel: function() {
-            console.log('_onSyncOrUpdateModel');
             this._executeAppliedPredefinedFilters();
         },
         _onAddModel: function(model) {
-            console.log('add');
             if (!_.isUndefined(this.originalModels)) {
                 this.originalModels.push(model);
             }
             this._executeAppliedPredefinedFilters();
         },
         _onRemoveModel: function(model) {
-            console.log('remove');
             if (!_.isUndefined(this.originalModels)) {
                 var index = _.indexOf(this.originalModels, model);
                 this.originalModels.splice(index, 1);
@@ -116,7 +112,6 @@
             this._executeAppliedPredefinedFilters();
         },
         _onChangeModel: function(model) {
-            console.log('change');
             if (!_.isUndefined(this.originalModels)) {
                 var originalModel = _.where(this.originalModels, {
                     cid: model.cid
@@ -134,7 +129,6 @@
             if (_.isUndefined(this.originalModels)) {
                 this.originalModels = this.models;
             } else {
-                console.log('resetting models'  + this.originalModels.length); 
                 this.models = _.clone(this.originalModels);
             }
             var filtersToExecute = _.omit(this._appliedPredefinedFilters, function(executeFilter) {
@@ -157,7 +151,6 @@
                 });
             } else {
                 this._predefinedFiltersApplied = false;
-                console.log('no filters to render');
                 this._setPages();
             }
         },
@@ -168,14 +161,11 @@
                 models = onInitializeModels;
             }
             if (this._usePaging) {
-                console.log('entering set new pages');
-                console.log(this.models.length);
                 var pages = _.range(Math.ceil(models.length / this._pagingOptions.modelsPerPage));
                 this._pages = [];
                 _.each(pages, function(page) {
                     self._pages.push(models.splice(0, self._pagingOptions.modelsPerPage));
                     if (page === _.last(pages)) {
-                        console.log('trigger going to page ');
                         return self.goToPage(self._currentPage, onInitializeModels);
                     }
                 });
@@ -234,8 +224,6 @@
                 } else if (pageNumber < 1) {
                     pageNumber = 1;
                 }
-                console.log('going to page ' + pageNumber);
-                console.log(this._pages[this._currentPage - 1].length);
                 this._currentPage = pageNumber;
                 this._setPagingInfo();
                 if(!_.isUndefined(onInitializeModels)){
