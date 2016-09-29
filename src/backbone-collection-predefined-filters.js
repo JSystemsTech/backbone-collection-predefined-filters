@@ -153,6 +153,7 @@
         },
         _setPages: function(onInitializeModels) {
             var self = this;
+            this.reset(this.models, {silent: true});
             var models = this.models;
             if (!_.isUndefined(onInitializeModels)) {
                 models = onInitializeModels;
@@ -238,9 +239,9 @@
                 if (!_.isUndefined(onInitializeModels)) {
                     onInitializeModels = this._pages[this._currentPage - 1];
                 } else {
-                    this.models = this._pages[this._currentPage - 1];
+                    this.reset(this._pages[this._currentPage - 1], {silent: true});
+                    //this.models = this._pages[this._currentPage - 1];
                 }
-                this._testNum = this.models.length;
             }
         },
         addPredefinedFilter: function(name, filterFunction, applyImmediately) {

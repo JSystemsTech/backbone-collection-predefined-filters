@@ -21,6 +21,7 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
         var testCollection_base = utils.getBaseCollection(true);
         var testCollection_base2 = utils.getBaseCollection(true);
         var testCollection_base2b = utils.getBaseCollection(true);
+        var testCollection_base2c = utils.getBaseCollection(true);
         var testCollection_base3 = utils.getBaseCollection(true);
         var testCollection_base4 = utils.getBaseCollection(true);
         var testCollection_base5 = utils.getBaseCollection(true);
@@ -155,6 +156,38 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 it('Returns expected model_3', function() {
                     expect(utils.hasModel(testCollection_base2b, utils.modelAttributes.modelC, true)).to.equal(true);
                 });
+            });
+        });
+        describe('* Apply Filter 3 as object parameter and verify sort order still works', function() {
+            testCollection_base2c.comparator = function(model) {
+                return -model.get("testIntData");
+            };
+            testCollection_base2c.applyPredefinedFilter({
+                'test-filter-3': true
+            });
+            it('_predefinedFiltersApplied is set to true', function() {
+                expect(testCollection_base2c._predefinedFiltersApplied).to.equal(true);
+            });
+            it('Apply utils.filter1 is set to true', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-1']).to.equal(false);
+            });
+            it('Apply utils.filter2 is set to false', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-2']).to.equal(false);
+            });
+            it('Apply utils.filter3 is set to true', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-3']).to.equal(true);
+            });
+            it('Apply utils.filter4 is set to false', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Returns expected number of models', function() {
+                expect(testCollection_base2c.models.length).to.equal(2);
+            });
+            it('Returns expected first model', function() {
+                expect(testCollection_base2c.models[0].get('testIntData')).to.equal(utils.modelAttributes.modelC.testIntData);
+            });
+            it('Returns expected second model', function() {
+                expect(testCollection_base2c.models[1].get('testIntData')).to.equal(utils.modelAttributes.modelA.testIntData);
             });
         });
         describe('* Unapply Filter 1', function() {
@@ -1164,8 +1197,18 @@ describe('### Testing Predefined Filter Collection Functionality with large Mock
                 modelsPerPage: 20
             }
         });
+        var mockCollection2 = utils.getMockCollection({
+            pagingOptions: {
+                modelsPerPage: 20
+            }
+        });
+        mockCollection2.comparator = function(model) {
+            return -model.get("id");
+        };
         mockCollection.trigger('sync');
-        mockCollection.trigger('predefined-filters:add', 'utils.findMales', utils.findMales, true);
+        mockCollection.trigger('predefined-filters:add', 'test-findMales', utils.findMales, true);
+        mockCollection2.trigger('sync');
+        mockCollection2.trigger('predefined-filters:add', 'test-findMales', utils.findMales, true);
         it('Collection has 100 pages', function() {
             expect(mockCollection.pagingInfo.pages).to.equal(25);
         });
@@ -1201,6 +1244,32 @@ describe('### Testing Predefined Filter Collection Functionality with large Mock
                         it('Returns Expected Model at index ' + index, function() {
                             expect(matchModel).to.equal(true);
                         });
+                    });
+                });
+            });
+        });
+        describe('* Sorted Collection maintains sort order', function() {
+            _.each(mockCollection2._pages, function(page, page_index) {
+                describe('- Verifying page ' + (page_index + 1) + ' sort order', function() {
+                    _.each(page, function(model, index) {
+                        var lastModel = mockCollection2._pages[0][0];
+                        var isFirstModel = false;
+                        var lastModelPageIndex = page_index;
+                        var lastModelIndex = index - 1;
+                        if (page_index === 0 && index === 0) {
+                            it('Model with id value of ' + model.get('id') + ' is less than or equal to : ' + lastModel.get('id'), function() {
+                                expect(model.get('id')).to.be <= lastModel.get('id');
+                            });
+                        } else {
+                            if (index === 0) {
+                                lastModelPageIndex = page_index - 1;
+                                lastModelIndex = mockCollection2._pages[lastModelPageIndex].length - 1;
+                            }
+                            lastModel = mockCollection2._pages[lastModelPageIndex][lastModelIndex];
+                            it('Model with id value of ' + model.get('id') + ' is less than : ' + lastModel.get('id'), function() {
+                                expect(model.get('id')).to.be < lastModel.get('id');
+                            });
+                        }
                     });
                 });
             });
