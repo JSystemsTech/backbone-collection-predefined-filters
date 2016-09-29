@@ -1,5 +1,6 @@
 (function(factory) {
     'use strict';
+    /* istanbul ignore next */
     // CommonJS
     if (typeof exports == "object" && typeof require == "function") {
         module.exports = factory(require("underscore"), require("backbone"));
@@ -38,7 +39,7 @@
             this.options = options;
             this._initializeCollectionEventListeners();
             this._initializeDefaults(models);
-            
+
         },
         _initializeDefaults: function(models) {
             var self = this;
@@ -71,9 +72,9 @@
                 }
             }
             _.each(this.predefinedFilters, function(filter, eventName) {
-                if (_isUndefined(_appliedPredefinedFilters[eventName])) {
+                if (_.isUndefined(self._appliedPredefinedFilters[eventName])) {
                     self._appliedPredefinedFilters[eventName] = false;
-                } else if (_appliedPredefinedFilters[eventName] === true) {
+                } else if (self._appliedPredefinedFilters[eventName] === true) {
                     executeFiltersOnInitialize = true;
                 }
             });
@@ -126,11 +127,7 @@
             callback();
         },
         _executeAppliedPredefinedFilters: function() {
-            if (_.isUndefined(this.originalModels)) {
-                this.originalModels = this.models;
-            } else {
-                this.models = _.clone(this.originalModels);
-            }
+            this.models = _.clone(this.originalModels);
             var filtersToExecute = _.omit(this._appliedPredefinedFilters, function(executeFilter) {
                 return !executeFilter;
             });
@@ -157,7 +154,7 @@
         _setPages: function(onInitializeModels) {
             var self = this;
             var models = this.models;
-            if(!_.isUndefined(onInitializeModels)){
+            if (!_.isUndefined(onInitializeModels)) {
                 models = onInitializeModels;
             }
             if (this._usePaging) {
@@ -197,11 +194,23 @@
             if (this._usePaging) {
                 var nextPage = this._nextPageInfo();
                 var previousPage = this._previousPageInfo();
+                var hasNextPage = true;
+                var hasPreviousPage = true;
+                if (!this._pagingOptions.enableLooping) {
+                    if (previousPage === null) {
+                        previousPage = this._currentPage;
+                        hasPreviousPage = false;
+                    }
+                    if (nextPage === null) {
+                        nextPage = this._currentPage;
+                        hasNextPage = false;
+                    }
+                }
                 this.pagingInfo = {
                     pages: this._pages.length,
                     currentPage: this._currentPage,
-                    hasNextPage: nextPage !== null,
-                    hasPreviousPage: previousPage !== null,
+                    hasNextPage: hasNextPage,
+                    hasPreviousPage: hasPreviousPage,
                     nextPage: nextPage,
                     previousPage: previousPage
                 }
@@ -226,9 +235,9 @@
                 }
                 this._currentPage = pageNumber;
                 this._setPagingInfo();
-                if(!_.isUndefined(onInitializeModels)){
+                if (!_.isUndefined(onInitializeModels)) {
                     onInitializeModels = this._pages[this._currentPage - 1];
-                }else{
+                } else {
                     this.models = this._pages[this._currentPage - 1];
                 }
                 this._testNum = this.models.length;
