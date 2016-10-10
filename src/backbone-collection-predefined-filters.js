@@ -3,11 +3,11 @@
     /* istanbul ignore next */
     // CommonJS
     if (typeof exports == "object" && typeof require == "function") {
-        module.exports = factory(require("underscore"), require("backbone"));
+        module.exports = factory(require("underscore"), require("backbone"), require("./filter_templates/filter-template-loader"));
     }
     // AMD
     else if (typeof define == "function" && define.amd) {
-        define(["underscore", "backbone"], factory);
+        define(["underscore", "backbone", "./filter_templates/filter-template-loader"], factory);
     }
     // Browser
     else if (typeof _ !== "undefined" && typeof Backbone !== "undefined") {
@@ -25,14 +25,14 @@
                // resets PredefinedFilterCollection to your other PredefinedFilterCollection.
                var PredefinedFilterCollection = PredefinedFilterCollection.noConflict();
            @static
-           @return {PageableCollection}
+           @return {PredefinedFilterCollection}
         */
         Backbone.PredefinedFilterCollection.noConflict = function() {
             Backbone.PredefinedFilterCollection = oldPredefinedFilterCollection;
             return PredefinedFilterCollection;
         };
     }
-}(function(_, Backbone) {
+}(function(_, Backbone, FilterTemplates) {
     'use strict';
     var PredefinedFilterCollection = Backbone.PredefinedFilterCollection = Backbone.Collection.extend({
         initialize: function(models, options) {
@@ -51,25 +51,23 @@
             this._pages = [];
             this.pagingInfo = {};
             this._appliedPredefinedFilters = {};
-            if (!_.isUndefined(this.options)) {
-                if (!_.isUndefined(this.options.predefinedFilters)) {
-                    this.predefinedFilters = this.options.predefinedFilters;
+            if (!_.isUndefined(this.options.predefinedFilters)) {
+                this.predefinedFilters = this.options.predefinedFilters;
+            }
+            if (!_.isUndefined(this.options.appliedPredefinedFilters)) {
+                this._appliedPredefinedFilters = this.options.appliedPredefinedFilters;
+            }
+            if (!_.isUndefined(this.options.pagingOptions)) {
+                this._usePaging = true;
+                this._pagingOptions = _.defaults(this.options.pagingOptions, {
+                    modelsPerPage: models.length, //Show all models on one page
+                    enableLooping: true,
+                    startPage: 1
+                });
+                if (this._pagingOptions.modelsPerPage < 1) {
+                    this._pagingOptions.modelsPerPage = 1;
                 }
-                if (!_.isUndefined(this.options.appliedPredefinedFilters)) {
-                    this._appliedPredefinedFilters = this.options.appliedPredefinedFilters;
-                }
-                if (!_.isUndefined(this.options.pagingOptions)) {
-                    this._usePaging = true;
-                    this._pagingOptions = _.defaults(this.options.pagingOptions, {
-                        modelsPerPage: models.length, //Show all models on one page
-                        enableLooping: true,
-                        startPage: 1
-                    });
-                    if (this._pagingOptions.modelsPerPage < 1) {
-                        this._pagingOptions.modelsPerPage = 1;
-                    }
-                    this._currentPage = this._pagingOptions.startPage;
-                }
+                this._currentPage = this._pagingOptions.startPage;
             }
             _.each(this.predefinedFilters, function(filter, eventName) {
                 if (_.isUndefined(self._appliedPredefinedFilters[eventName])) {
@@ -100,27 +98,22 @@
             this._executeAppliedPredefinedFilters();
         },
         _onAddModel: function(model) {
-            if (!_.isUndefined(this.originalModels)) {
-                this.originalModels.push(model);
-            }
+            this.originalModels.push(model);
             this._executeAppliedPredefinedFilters();
         },
         _onRemoveModel: function(model) {
-            if (!_.isUndefined(this.originalModels)) {
-                var index = _.indexOf(this.originalModels, model);
-                this.originalModels.splice(index, 1);
-            }
+            var index = _.indexOf(this.originalModels, model);
+            this.originalModels.splice(index, 1);
             this._executeAppliedPredefinedFilters();
         },
         _onChangeModel: function(model) {
-            if (!_.isUndefined(this.originalModels)) {
-                var originalModel = _.where(this.originalModels, {
-                    cid: model.cid
-                })[0];
-                var index = _.indexOf(this.originalModels, originalModel);
-                this.originalModels[index].set(model.attributes);
-                this._executeAppliedPredefinedFilters();
-            }
+            var originalModel = _.where(this.originalModels, {
+                cid: model.cid
+            })[0];
+            var index = _.indexOf(this.originalModels, originalModel);
+            this.originalModels[index].set(model.attributes);
+            this._executeAppliedPredefinedFilters();
+
         },
         _executeFilter: function(name, callback) {
             this.models = this.filter(this.predefinedFilters[name]);
@@ -153,7 +146,9 @@
         },
         _setPages: function(onInitializeModels) {
             var self = this;
-            this.reset(this.models, {silent: true});
+            this.reset(this.models, {
+                silent: true
+            });
             var models = this.models;
             if (!_.isUndefined(onInitializeModels)) {
                 models = onInitializeModels;
@@ -239,10 +234,14 @@
                 if (!_.isUndefined(onInitializeModels)) {
                     onInitializeModels = this._pages[this._currentPage - 1];
                 } else {
-                    this.reset(this._pages[this._currentPage - 1], {silent: true});
-                    //this.models = this._pages[this._currentPage - 1];
+                    this.reset(this._pages[this._currentPage - 1], {
+                        silent: true
+                    });
                 }
             }
+        },
+        addPredefinedFilterFromTemplate: function(name, templateName, options, applyImmediately) {
+            this.addPredefinedFilter(name, FilterTemplates[templateName](options, this), applyImmediately);
         },
         addPredefinedFilter: function(name, filterFunction, applyImmediately) {
             this._appliedPredefinedFilters[name] = applyImmediately || false;

@@ -2,6 +2,7 @@
 
 var preDefCollection = require('../src/backbone-collection-predefined-filters'),
     MOCK_DATA = require('../test/MOCK_DATA'),
+    MOCK_DATA_2 = require('../test/MOCK_DATA_2'),
     _ = require('underscore'),
     Backbone = require('backbone')
 var generateTestModel = function(attributes) {
@@ -42,6 +43,13 @@ var getBaseCollection = function(addBasePredefinedFilters, options) {
 var getMockCollection = function(options) {
     var models = [];
     _.each(MOCK_DATA, function(data) {
+        models.push(generateTestModel(data));
+    });
+    return new preDefCollection(models, options);
+};
+var getMock2Collection = function(options) {
+    var models = [];
+    _.each(MOCK_DATA_2, function(data) {
         models.push(generateTestModel(data));
     });
     return new preDefCollection(models, options);
@@ -94,6 +102,7 @@ module.exports = {
     modelAttributes: modelAttributes,
     getBaseCollection: getBaseCollection,
     getMockCollection: getMockCollection,
+    getMock2Collection: getMock2Collection,
     hasModel: hasModel,
     filter1: filter1,
     filter2: filter2,

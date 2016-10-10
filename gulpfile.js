@@ -11,7 +11,9 @@ var source = require('vinyl-source-stream');
 var path = require('path');
 
 gulp.task('test', function() {
-    return gulp.src('./src/**/*-spec.js', {read: false})
+    return gulp.src('./src/**/*-spec.js', {
+            read: false
+        })
         .pipe(mocha({
             require: [path.resolve('./mocha-helper.js')]
         }));
@@ -33,16 +35,20 @@ gulp.task('coverage', function() {
 gulp.task('browserify', function() {
     var input = './src/backbone-collection-predefined-filters.js';
     return browserify({
-        entries: [path.resolve(input)],
-        standalone: 'backbone-collection-predefined-filters'
-    })
+            entries: [path.resolve(input)],
+            standalone: 'backbone-collection-predefined-filters'
+        })
         .bundle()
         .pipe(source(input))
         .pipe(rename('backbone-collection-predefined-filters.js'))
         .pipe(buffer())
         .pipe(gulp.dest('./dist'))
         .pipe(rename('backbone-collection-predefined-filters.min.js'))
-        .pipe(uglify({compress: {dead_code: true}}))
+        .pipe(uglify({
+            compress: {
+                dead_code: true
+            }
+        }))
         .pipe(gulp.dest('./dist'));
 });
 

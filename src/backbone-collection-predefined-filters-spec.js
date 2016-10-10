@@ -723,7 +723,7 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             expect(utils.hasModel(testCollection_9, utils.modelAttributes.modelA)).to.equal(true);
         });
         it('Returns expected model_2', function() {
-            expect(utils.hasModel(testCollection_9, utils.modelAttributes.modelA)).to.equal(true);
+            expect(utils.hasModel(testCollection_9, utils.modelAttributes.modelC)).to.equal(true);
         });
         describe('* Original Models is unaffected', function() {
             it('Returns expected number of models', function() {
@@ -777,10 +777,18 @@ describe('### Testing Predefined Filter Collection Functionality with large Mock
                 modelsPerPage: 0
             }
         });
+        var mockCollectionNonPagable = utils.getMockCollection();
         mockCollection.trigger('sync');
         mockCollectionInvalidOptions.trigger('sync');
         it('Collection with invalid Paging Options has 1000 pages', function() {
             expect(mockCollectionInvalidOptions.pagingInfo.pages).to.equal(1000);
+        });
+        it('Non pagable Collection does not execute functions for paging', function() {
+            mockCollectionNonPagable._nextPageInfo();
+            mockCollectionNonPagable._previousPageInfo();
+            mockCollectionNonPagable._setPagingInfo();
+            mockCollectionNonPagable.goToPage();
+            expect(mockCollectionNonPagable.models.length).to.equal(1000);
         });
         describe('* Verfiy get next/prev page', function() {
             describe('- Verfiy paging info', function() {
