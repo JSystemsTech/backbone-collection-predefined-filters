@@ -1,6 +1,8 @@
 'use strict';
 var utils = require('../../../test/test-utils'),
-	expect = require('must');
+	expect = require('must'),
+	moment = require('moment'),
+	isBehindUTC = moment().utcOffset() < 0;
 
 describe('### Testing Date Range Filter ###', function() {
 	describe('# Testing Base Date Range Filter Options no options', function() {
@@ -83,7 +85,11 @@ describe('### Testing Date Range Filter ###', function() {
 			}]
 		}, true);
 		it('Returns expected number of models', function() {
-			expect(mockCollection.models.length).to.equal(422);
+			if (isBehindUTC) {
+				expect(mockCollection.models.length).to.equal(422);
+			} else {
+				expect(mockCollection.models.length).to.equal(423);
+			}
 		});
 	});
 	describe('# Testing Base Date Range Filter Options add end date', function() {
@@ -118,7 +124,11 @@ describe('### Testing Date Range Filter ###', function() {
 			}]
 		}, true);
 		it('Returns expected number of models', function() {
-			expect(mockCollection.models.length).to.equal(381);
+			if (isBehindUTC) {
+				expect(mockCollection.models.length).to.equal(381);
+			} else {
+				expect(mockCollection.models.length).to.equal(382);
+			}
 		});
 	});
 	describe('# Testing Date Range Filter With End Date', function() {
