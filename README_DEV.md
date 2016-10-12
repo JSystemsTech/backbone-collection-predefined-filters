@@ -31,6 +31,10 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 | [![Functions Covered][coverage-functions-badge]][coverage-url]     	|
 | [![Branches Covered][coverage-branches-badge]][coverage-url]       	|
 
+[![Lines Covered][coverage-lines-badge]][coverage-url]
+[![Statements Covered][coverage-statements-badge]][coverage-url]
+[![Functions Covered][coverage-functions-badge]][coverage-url]
+[![Branches Covered][coverage-branches-badge]][coverage-url]
 
 [![Number of Tests][tests-total-badge]][travis-url]
 [![Tests Passed][tests-passed-badge]][travis-url] [![Tests Failed][tests-failed-badge]][travis-url]
@@ -61,11 +65,3 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 [coverage-url]: https://coveralls.io/github/JSystemsTech/backbone-collection-predefined-filters?branch=master
 [coverage-badge]: https://coveralls.io/repos/github/JSystemsTech/backbone-collection-predefined-filters/badge.svg?branch=master
-
-[coverage-lines-badge]: https://img.shields.io/badge/Lines-288%2F288%20100%25-brightgreen.svg?style=flat
-[coverage-statements-badge]: https://img.shields.io/badge/Statements-288%2F288%20100%25-brightgreen.svg?style=flat
-[coverage-branches-badge]: https://img.shields.io/badge/Branches-226%2F226%20100%25-brightgreen.svg?style=flat
-[coverage-functions-badge]: https://img.shields.io/badge/Functions-59%2F59%20100%25-brightgreen.svg?style=flat
-[tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2385-brightgreen.svg?style=flat
-[tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
-[tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2385-blue.svg?style=flat
