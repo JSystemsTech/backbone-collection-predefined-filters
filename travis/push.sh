@@ -6,10 +6,6 @@ then
   echo -e "Configure Git username and email\n"
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
-
-  echo -e pwd
-  echo -e "git checkout master\n"
-  git checkout -b master
  
   echo -e "git add README.md\n"
   git add README.md
