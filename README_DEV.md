@@ -24,18 +24,13 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ## <a name="tests"></a>Tests
 
-  npm test
+| Coverage Test Results 												| [![Travis Build Number][travis-build-badge]][travis-url] |
+|     :---:      														|		:---:    										   |
+| [![Lines Covered][coverage-lines-badge]][coverage-url]     			| [![Number of Tests][tests-total-badge]][travis-url]	   |
+| [![Statements Covered][coverage-statements-badge]][coverage-url]      | [![Tests Passed][tests-passed-badge]][travis-url]		   |
+| [![Functions Covered][coverage-functions-badge]][coverage-url]     	| [![Tests Failed][tests-failed-badge]][travis-url]		   |
+| [![Branches Covered][coverage-branches-badge]][coverage-url]       	|														   |
 
-| Coverage Test Results 												|
-|     :---:      														|
-| [![Lines Covered][coverage-lines-badge]][coverage-url]     			|
-| [![Statements Covered][coverage-statements-badge]][coverage-url]      |
-| [![Functions Covered][coverage-functions-badge]][coverage-url]     	|
-| [![Branches Covered][coverage-branches-badge]][coverage-url]       	|
-
-[![Travis Build Number][travis-build-badge]][travis-url]
-[![Number of Tests][tests-total-badge]][travis-url]
-[![Tests Passed][tests-passed-badge]][travis-url] [![Tests Failed][tests-failed-badge]][travis-url]
 
 ## <a name="filter-templates"></a>Filter Templates
 
