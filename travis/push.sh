@@ -7,11 +7,12 @@ then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
 
+  echo -e pwd
   echo -e "git checkout master\n"
   git checkout -b master
  
   echo -e "git add README.md\n"
-  git add -f . README.md
+  git add README
   echo -e "git commit"
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed README.md update to master"
 

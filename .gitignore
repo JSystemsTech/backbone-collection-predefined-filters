@@ -12,3 +12,5 @@ npm-debug.log
 .settings/
 .project
 .metadata
+coverage-summary.json
+mocha-output.json
