@@ -1,3 +1,5 @@
+[![Backbon Collection Predefined Filters Logo][main-logo]]
+
 # Backbone Collection Predefined Filters
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
 
@@ -31,11 +33,6 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 | [![Functions Covered][coverage-functions-badge]][coverage-url]     	|
 | [![Branches Covered][coverage-branches-badge]][coverage-url]       	|
 
-[![Lines Covered][coverage-lines-badge]][coverage-url]
-[![Statements Covered][coverage-statements-badge]][coverage-url]
-[![Functions Covered][coverage-functions-badge]][coverage-url]
-[![Branches Covered][coverage-branches-badge]][coverage-url]
-
 [![Travis Build Number][travis-build-badge]][travis-url]
 [![Number of Tests][tests-total-badge]][travis-url]
 [![Tests Passed][tests-passed-badge]][travis-url] [![Tests Failed][tests-failed-badge]][travis-url]
@@ -51,6 +48,8 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 * **1.0.0** Initial release
 
+
+[main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 
