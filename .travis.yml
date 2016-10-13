@@ -1,13 +1,15 @@
 language: node_js
 node_js:
-  - stable
+- stable
 install:
-  - npm install
-
+- npm install
 script:
-  - npm run cover
-  - npm run report
-  - npm run document
-
-# Send coverage data to Coveralls
-after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+- npm run cover
+- npm run report
+- npm run document
+after_script: cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
+after_success:
+  - .travis/push.sh
+env:
+  global:
+    secure: iisTx2OiEfwalvvwFbU6rpZ8FCAY+wzzVJkZB6Wqlvg6cJV59E2XMB8oVjYrXw/3ykPk68ZyHJTmqPSGmt+IJrcKkttbcWKmXSpQCFZozAzPLFbTNEH94WuA5Ylj+x8xacLuaJIU1IdfcRsuY/SZAPkVVRzNIPIKN8onjlQG3AAvCNoiFBBiiCbzerQsr4PR/x2kfEq/A0x9y+TVGV231g+EWmNRs/QZl9HlnkmlK9NB75Qf+kQKAHvSBYAl/KCgGsXxgzNxrIA8fOt5Rw23r+sN8e8dytfg34NZ525Kje588+GxMaM+Fuog7uSP25jRbD6XJTYd6wXc5hMLVF/Bl3tRyqxnO8kwCWWOHF0t4WQYzAG8YAWETIrvz24vSlPe8i6socySjNlBOGVj5QtZvycRr3E0h76m4u9b1y/Zxn/MqKYIHCtrWdxMwx2uy0fVAw/3wpxuZlkEDHKSaSk4my9RS9VTRXtTtO/c3Et07Fzhi76PelanS5BXbUw98x7pMjcazBCBxY+WjTiiwqwd3v5uySllAyQqgbyu8oC8NhMazsLw/te27C4ZZ6VUlQpW6LuPgb8rrD8cpIGfWARmkTomunfvOGfQDkx5XLEydRugIVC/4dQAyq7U8aJ8AmaZhlUBp6q/5AYbk8F4/mgkdIwarmaCPRPnC0I9GC6JX14=
