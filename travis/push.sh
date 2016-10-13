@@ -7,6 +7,7 @@ then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
  
+  git branch
   echo -e "git add README.md\n"
   git add README.md
   echo -e "git commit\n"
