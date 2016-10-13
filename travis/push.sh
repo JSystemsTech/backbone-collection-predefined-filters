@@ -9,7 +9,6 @@ then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
 
-  cd master || exit
   git checkout -b master
  
   git add -f . README.md
