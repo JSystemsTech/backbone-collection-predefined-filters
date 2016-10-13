@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$TRAVIS_PULL_REQUEST" == "false" ]
+if [ "$TRAVIS_PULL_REQUEST" = "false" ]
 then
   echo -e "Starting to update README.md\n"
 
