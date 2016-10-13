@@ -9,7 +9,7 @@ then
  
   echo -e "git add README.md\n"
   git add README.md
-  echo -e "git commit"
+  echo -e "git commit\n"
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed README.md update to master"
 
   echo -e "push to master\n"
