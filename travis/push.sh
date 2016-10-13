@@ -12,7 +12,7 @@ then
   git checkout -b master
  
   echo -e "git add README.md\n"
-  git add README
+  git add README.md
   echo -e "git commit"
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed README.md update to master"
 
