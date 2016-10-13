@@ -3,6 +3,8 @@
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]
 then
   echo -e "Starting to update README.md\n"
+  local travis_build_badge = "\n[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-$TRAVIS_BUILD_NUMBER-4B0082.svg?style=flat"
+  echo "hello" >> README.md
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
   git add README.md

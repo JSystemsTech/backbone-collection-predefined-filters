@@ -36,6 +36,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 [![Functions Covered][coverage-functions-badge]][coverage-url]
 [![Branches Covered][coverage-branches-badge]][coverage-url]
 
+[![Travis Build Number][travis-build-badge]][travis-url]
 [![Number of Tests][tests-total-badge]][travis-url]
 [![Tests Passed][tests-passed-badge]][travis-url] [![Tests Failed][tests-failed-badge]][travis-url]
 
