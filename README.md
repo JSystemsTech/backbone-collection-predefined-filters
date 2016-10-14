@@ -24,18 +24,13 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ## <a name="tests"></a>Tests
 
-  npm test
+| Coverage Test Results 												| [![Travis Build Number][travis-build-badge]][travis-url] |
+|     :---:      														|		:---:    										   |
+| [![Lines Covered][coverage-lines-badge]][coverage-url]     			| [![Number of Tests][tests-total-badge]][travis-url]	   |
+| [![Statements Covered][coverage-statements-badge]][coverage-url]      | [![Tests Passed][tests-passed-badge]][travis-url]		   |
+| [![Functions Covered][coverage-functions-badge]][coverage-url]     	| [![Tests Failed][tests-failed-badge]][travis-url]		   |
+| [![Branches Covered][coverage-branches-badge]][coverage-url]       	|														   |
 
-| Coverage Test Results 												|
-|     :---:      														|
-| [![Lines Covered][coverage-lines-badge]][coverage-url]     			|
-| [![Statements Covered][coverage-statements-badge]][coverage-url]      |
-| [![Functions Covered][coverage-functions-badge]][coverage-url]     	|
-| [![Branches Covered][coverage-branches-badge]][coverage-url]       	|
-
-[![Travis Build Number][travis-build-badge]][travis-url]
-[![Number of Tests][tests-total-badge]][travis-url]
-[![Tests Passed][tests-passed-badge]][travis-url] [![Tests Failed][tests-failed-badge]][travis-url]
 
 ## <a name="filter-templates"></a>Filter Templates
 
@@ -74,4 +69,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2385-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2385-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-33-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-34-4B0082.svg?style=flat
