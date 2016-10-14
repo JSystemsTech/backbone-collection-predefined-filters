@@ -1,4 +1,4 @@
-[![Backbon Collection Predefined Filters Logo][main-logo]]
+![Backbon Collection Predefined Filters Logo][main-logo]
 
 # Backbone Collection Predefined Filters
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
@@ -10,6 +10,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 2. [Usage](#usage)
 3. [Tests](#tests)
 4. [Filter Templates](#filter-templates)
+<#filter-templates-table-of-contents-content>
 5. [Contributing](#contributing)
 6. [Release History](#release-history)
 
@@ -33,6 +34,8 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 
 ## <a name="filter-templates"></a>Filter Templates
+
+<#filter-templates-content>
 
 ## <a name="contributing"></a>Contributing
 
