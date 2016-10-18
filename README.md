@@ -1,4 +1,4 @@
-[![Backbon Collection Predefined Filters Logo][main-logo]]
+![Backbon Collection Predefined Filters Logo][main-logo]
 
 # Backbone Collection Predefined Filters
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
@@ -10,6 +10,10 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 2. [Usage](#usage)
 3. [Tests](#tests)
 4. [Filter Templates](#filter-templates)
+  * [Date Range Filter Template](#filter-templates-date-range)
+  * [Or Filter Template](#filter-templates-or)
+  * [Range Filter Template](#filter-templates-range)
+  * [Text Search Filter Template](#filter-templates-text-search)
 5. [Contributing](#contributing)
 6. [Release History](#release-history)
 
@@ -33,6 +37,19 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 
 ## <a name="filter-templates"></a>Filter Templates
+
+#### <a name="filter-templates-date-range"></a>Date Range Filter Template
+   documentation coming soon!
+
+#### <a name="filter-templates-or"></a>Or Filter Template
+   documentation for Or Filter Template still under construction
+
+#### <a name="filter-templates-range"></a>Range Filter Template
+   documentation for Range Filter Template still under construction
+
+#### <a name="filter-templates-text-search"></a>Text Search Filter Template
+   documentation for Text Search Filter Template still under construction
+
 
 ## <a name="contributing"></a>Contributing
 
@@ -69,4 +86,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2385-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2385-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-34-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-35-4B0082.svg?style=flat
