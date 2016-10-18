@@ -13,6 +13,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 <#filter-templates-table-of-contents-content>
 5. [Contributing](#contributing)
 6. [Release History](#release-history)
+7. [Travis CI Build History](#build-history)
 
 ## <a name="installation"></a>Installation
 
@@ -25,12 +26,12 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ## <a name="tests"></a>Tests
 
-| Coverage Test Results 												| [![Travis Build Number][travis-build-badge]][travis-url] |
-|     :---:      														|		:---:    										   |
-| [![Lines Covered][coverage-lines-badge]][coverage-url]     			| [![Number of Tests][tests-total-badge]][travis-url]	   |
-| [![Statements Covered][coverage-statements-badge]][coverage-url]      | [![Tests Passed][tests-passed-badge]][travis-url]		   |
-| [![Functions Covered][coverage-functions-badge]][coverage-url]     	| [![Tests Failed][tests-failed-badge]][travis-url]		   |
-| [![Branches Covered][coverage-branches-badge]][coverage-url]       	|														   |
+| Coverage Test Results 											| Unit Test Run											   |
+|     ---      														|		---    										   	   |
+| [![Lines Covered][coverage-lines-badge]][coverage-url]     		| [![Travis Build Number][travis-build-badge]][travis-url] |
+| [![Statements Covered][coverage-statements-badge]][coverage-url]  | [![Number of Tests][tests-total-badge]][travis-url]	   |
+| [![Functions Covered][coverage-functions-badge]][coverage-url]    | [![Tests Passed][tests-passed-badge]][travis-url]		   |
+| [![Branches Covered][coverage-branches-badge]][coverage-url]      | [![Tests Failed][tests-failed-badge]][travis-url]		   |
 
 
 ## <a name="filter-templates"></a>Filter Templates
@@ -46,6 +47,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 * **1.0.0** Initial release
 
+## <a name="build-history"></a>Travis CI Build History
+
+<#build-history-content>
+
+<#build-history-content-badge-urls>
+
 
 [main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
@@ -56,6 +63,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [npm-downloads-image]: http://img.shields.io/npm/dm/backbone-collection-predefined-filters.svg?style=flat
 
 [travis-url]: https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters
+[travis-builds-url]: https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds
 [travis-image]: https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters.svg?branch=master
 
 [dependancies-image]:https://david-dm.org/JSystemsTech/backbone-collection-predefined-filters.svg?style=flat

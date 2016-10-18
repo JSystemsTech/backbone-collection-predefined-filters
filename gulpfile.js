@@ -7,6 +7,7 @@ var mocha = require('gulp-mocha');
 var concat = require('gulp-concat');
 var flatmap = require('gulp-flatmap');
 var istanbul = require('gulp-istanbul');
+var util = require('gulp-util');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
@@ -68,7 +69,14 @@ gulp.task('buildreadme', function() {
         }))
         .pipe(gulpHelpers.setFilterTemplateDocs(tableOfContentsRows, filterTemplateRows))
         .pipe(gulpHelpers.setBadgeUrls())
+        .pipe(gulpHelpers.setBuildHistory())
         .pipe(rename('README.md'))
+        .pipe(buffer())
+        .pipe(gulp.dest('./'));
+});
+gulp.task('updatebuildhistory', function() {
+    return gulp.src(['./build_history.json'])
+        .pipe(gulpHelpers.addBuildHistory(util.env.buildnumber))
         .pipe(buffer())
         .pipe(gulp.dest('./'));
 });

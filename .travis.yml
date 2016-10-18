@@ -6,9 +6,12 @@ install:
 script:
 - npm run cover
 - npm run report
+- gulp updatebuildhistory --buildnumber "$TRAVIS_BUILD_NUMBER"
 - npm run document
 after_script: cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
 after_success:
+- "travis/push.sh"
+after_fail:
 - "travis/push.sh"
 env:
   global:

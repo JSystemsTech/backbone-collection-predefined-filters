@@ -3,6 +3,7 @@ var eventStream = require('event-stream');
 var badgeUrl = require('shields-badge-url-custom');
 var _ = require('underscore');
 var fs = require('fs');
+var util = require('gulp-util');
 
 var getColorFromPercent = function(percent) {
 	var color = 'lightgrey';
@@ -91,7 +92,7 @@ var getFile = function(path, callback) {
 }
 var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
 	var transform = function(file, callback) {
-		getFile('./README_DEV.md', function(data) {
+		getFile('./README_TEMPLATE.md', function(data) {
 			data = data.replace('<#filter-templates-table-of-contents-content>', tableOfContentsRows.join('\n')).replace('<#filter-templates-content>', filterTemplateRows.join('\n'));
 			file.contents = new Buffer(data);
 			callback(null, file);
@@ -100,8 +101,68 @@ var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
 	}
 	return eventStream.map(transform);
 };
-
+var setBuildHistory = function(tableOfContentsRows, filterTemplateRows) {
+	var buildHistory = require('./build_history');
+	var buildHistoryTable = '| Build Number \\| Result |\n' +
+		'| --- 					  |\n';
+	var sortedBuilds = Object.keys(buildHistory).sort(function(a, b) {
+		return parseInt(b) - parseInt(a);
+	});
+	var buildBadgeUrlKeyURLs = [];
+	_.each(sortedBuilds, function(build) {
+		var buildBadgeUrlKeyURL = '[build-history-badge-' + build + '-url]';
+		buildBadgeUrlKeyURLs.push(buildBadgeUrlKeyURL + ': ' + buildHistory[build].badgeUrl);
+		buildHistoryTable = buildHistoryTable + '| [![Travis Build Number ' + build + ']' + buildBadgeUrlKeyURL + '][travis-builds-url] |\n';
+	});
+	var transform = function(file, callback) {
+		util.log(buildBadgeUrlKeyURLs);
+		var data = String(file.contents).replace('<#build-history-content>', buildHistoryTable).replace('<#build-history-content-badge-urls>', buildBadgeUrlKeyURLs.join('\n'));
+		file.contents = new Buffer(data);
+		callback(null, file);
+	};
+	return eventStream.map(transform);
+};
+var addBuildHistory = function(buildNumber) {
+	var data = require('./coverage-summary.json');
+	var testOutput = require('./mocha-output.json');
+	var VERSION_NUMBER = require('./package.json').version;
+	var passed = 0;
+	var failed = 0;
+	var total = 0;
+	var status = 'Passed';
+	var percent = 100;
+	if (failed > 0) {
+		status = 'Failed';
+		percent = 0;
+	}
+	_.each(testOutput, function(testBlock) {
+		_.each(testBlock, function(test) {
+			total++;
+			if (test === 'PASSED') {
+				passed++;
+			} else {
+				failed++;
+			}
+		});
+	});
+	var transform = function(file, callback) {
+		var buildNumberLabel = 'TravisCI%20' + VERSION_NUMBER + '.' + buildNumber;
+		var data = JSON.parse(String(file.contents));
+		data[buildNumber] = {
+			badgeUrl: getBadgeUrl(null, null, {
+				'label': buildNumberLabel,
+				'status': status,
+				'color': getColorFromPercent(percent)
+			})
+		}
+		file.contents = new Buffer(JSON.stringify(data));
+		callback(null, file);
+	}
+	return eventStream.map(transform);
+}
 module.exports = {
 	setBadgeUrls: setBadgeUrls,
-	setFilterTemplateDocs: setFilterTemplateDocs
+	setFilterTemplateDocs: setFilterTemplateDocs,
+	addBuildHistory: addBuildHistory,
+	setBuildHistory: setBuildHistory
 };
