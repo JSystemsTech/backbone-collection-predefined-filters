@@ -103,7 +103,7 @@ var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
 };
 var setBuildHistory = function(tableOfContentsRows, filterTemplateRows) {
 	var buildHistory = require('./build_history');
-	var buildHistoryTable = '| Build Number \\| Result |\n' +
+	var buildHistoryTable = '| Build Number \: Result |\n' +
 		'| --- 					  |\n';
 	var sortedBuilds = Object.keys(buildHistory).sort(function(a, b) {
 		return parseInt(b) - parseInt(a);
@@ -115,7 +115,6 @@ var setBuildHistory = function(tableOfContentsRows, filterTemplateRows) {
 		buildHistoryTable = buildHistoryTable + '| [![Travis Build Number ' + build + ']' + buildBadgeUrlKeyURL + '][travis-builds-url] |\n';
 	});
 	var transform = function(file, callback) {
-		util.log(buildBadgeUrlKeyURLs);
 		var data = String(file.contents).replace('<#build-history-content>', buildHistoryTable).replace('<#build-history-content-badge-urls>', buildBadgeUrlKeyURLs.join('\n'));
 		file.contents = new Buffer(data);
 		callback(null, file);
