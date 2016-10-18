@@ -63,8 +63,9 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## <a name="build-history"></a>Travis CI Build History
 
-| Build Number \| Result |
+| Build Number : Result |
 | --- 					  |
+| [![Travis Build Number 37][build-history-badge-37-url]][travis-builds-url] |
 | [![Travis Build Number 36][build-history-badge-36-url]][travis-builds-url] |
 | [![Travis Build Number 35][build-history-badge-35-url]][travis-builds-url] |
 | [![Travis Build Number 34][build-history-badge-34-url]][travis-builds-url] |
@@ -103,6 +104,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 | [![Travis Build Number 1][build-history-badge-1-url]][travis-builds-url] |
 
 
+[build-history-badge-37-url]: https://img.shields.io/badge/TravisCI%201.0.0.37-Passed-brightgreen.svg?style=flat
 [build-history-badge-36-url]: https://img.shields.io/badge/TravisCI%201.0.0.36-Passed-brightgreen.svg?style=flat
 [build-history-badge-35-url]: https://img.shields.io/badge/TravisCI%201.0.0.35-Passed-brightgreen.svg?style=flat
 [build-history-badge-34-url]: https://img.shields.io/badge/TravisCI%201.0.0.34-Passed-brightgreen.svg?style=flat
@@ -167,4 +169,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2385-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2385-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-36-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-37-4B0082.svg?style=flat
