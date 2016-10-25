@@ -6,7 +6,7 @@ then
   echo "\n[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-$TRAVIS_BUILD_NUMBER-4B0082.svg?style=flat" >> README.md
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
-  buildnumber = "cat version_number.txt"
+  buildnumber=`cat version_number.txt`
 
   git add build_history.json
   git add README.md
