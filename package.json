@@ -1,5 +1,5 @@
 {
-  "name": "backboneCollectionPredefinedFilters",
+  "name": "Backbone-Collection-Predefined-Filters",
   "version": "1.0.0",
   "description": "An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection",
   "main": "index.js",

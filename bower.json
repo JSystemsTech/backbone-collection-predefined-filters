@@ -1,5 +1,5 @@
 {
-  "name": "backboneCollectionPredefinedFilters",
+  "name": "Backbone-Collection-Predefined-Filters",
   "main": "dist/backbone-collection-predefined-filters.min.js",
   "version": "1.0.0",
   "homepage": "https://github.com/JSystemsTech/backbone-collection-predefined-filters",

@@ -93,11 +93,19 @@ var getFile = function(path, callback) {
 var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
 	var transform = function(file, callback) {
 		getFile('./README_TEMPLATE.md', function(data) {
-			data = data.replace('<#filter-templates-table-of-contents-content>', tableOfContentsRows.join('\n')).replace('<#filter-templates-content>', filterTemplateRows.join('\n'));
+			data = data.replace('{{>filter-templates-table-of-contents-content}}', tableOfContentsRows.join('\n')).replace('{{>filter-templates-content}}', filterTemplateRows.join('\n'));
 			file.contents = new Buffer(data);
 			callback(null, file);
 		});
 
+	}
+	return eventStream.map(transform);
+};
+var getVersionNumber = function() {
+	var transform = function(file, callback) {
+		var data = JSON.parse(String(file.contents));
+		file.contents = new Buffer(data.version);
+		callback(null, file);
 	}
 	return eventStream.map(transform);
 };
@@ -115,7 +123,7 @@ var setBuildHistory = function(tableOfContentsRows, filterTemplateRows) {
 		buildHistoryTable = buildHistoryTable + '| [![Travis Build Number ' + build + ']' + buildBadgeUrlKeyURL + '][travis-builds-url] |\n';
 	});
 	var transform = function(file, callback) {
-		var data = String(file.contents).replace('<#build-history-content>', buildHistoryTable).replace('<#build-history-content-badge-urls>', buildBadgeUrlKeyURLs.join('\n'));
+		var data = String(file.contents).replace('{{>build-history-content}}', buildHistoryTable).replace('{{>build-history-content-badge-urls}}', buildBadgeUrlKeyURLs.join('\n'));
 		file.contents = new Buffer(data);
 		callback(null, file);
 	};
@@ -158,10 +166,11 @@ var addBuildHistory = function(buildNumber) {
 		callback(null, file);
 	}
 	return eventStream.map(transform);
-}
+};
 module.exports = {
 	setBadgeUrls: setBadgeUrls,
 	setFilterTemplateDocs: setFilterTemplateDocs,
 	addBuildHistory: addBuildHistory,
-	setBuildHistory: setBuildHistory
+	setBuildHistory: setBuildHistory,
+	getVersionNumber: getVersionNumber
 };

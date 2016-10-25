@@ -80,6 +80,13 @@ gulp.task('updatebuildhistory', function() {
         .pipe(buffer())
         .pipe(gulp.dest('./'));
 });
+gulp.task('getversionnumber', function() {
+    return gulp.src(['./package.json'])
+        .pipe(gulpHelpers.getVersionNumber())
+        .pipe(buffer())
+        .pipe(rename('version_number.txt'))
+        .pipe(gulp.dest('./'));
+});
 gulp.task('browserify', function() {
     var input = './src/backbone-collection-predefined-filters.js';
     return browserify({

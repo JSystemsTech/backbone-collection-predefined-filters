@@ -1,31 +1,97 @@
-![Backbon Collection Predefined Filters Logo][main-logo]
-
-# Backbone Collection Predefined Filters
+![Backbone Collection Predefined Filters Logo][main-logo]
+---
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
 
 [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][dependancies-image]][dependancies-url] [![Coverage Status][coverage-badge]][coverage-url]
+---
 
-## Table of Contents
+## <a name="pagetop"></a>Table of Contents
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Tests](#tests)
 4. [Filter Templates](#filter-templates)
-<#filter-templates-table-of-contents-content>
+{{>filter-templates-table-of-contents-content}}
 5. [Contributing](#contributing)
 6. [Release History](#release-history)
 7. [Travis CI Build History](#build-history)
 
 ## <a name="installation"></a>Installation
-
-  npm install backboneCollectionPredefinedFilters --save
-
-  bower install backboneCollectionPredefinedFilters
+| Installation Type | Command|
+|     :---:      	|	---  |
+| npm 	            | npm install Backbone-Collection-Predefined-Filters --save |
+| bower             | bower install Backbone-Collection-Predefined-Filters 	 	|
 
 ## <a name="usage"></a>Usage
 
+#### Available Collection Functions
+| Function Name | Expected Parameters | Notes |
+|     ---	    |	---    			  | --- |
+| addPredefinedFilter 				| **name** (String -unique key value for collection filter list)<br/>**filterFunction** (Function - A function that takes in a model as a parameter and returns a boolean)<br/>**applyImmediately** (Boolean *optional* - Immediatelly applies the filter to the collection. Defaults to false if not specified	| |
+| addPredefinedFilterFromTemplate 	| **name** (String -unique key value for collection filter list)<br/>**templateName** (String - Type of Filter to add from filter template list. *See [Filter Templates](#filter-templates) for more information about individual filter template types*)<br/>**options** (Object - A configuation object passed to the filter template builder. *See [Filter Templates](#filter-templates) for more information about individual filter template options*)<br/>**applyImmediately** (Boolean *optional* - Immediatelly applies the filter to the collection. Defaults to false if not specified	| |
+| applyPredefinedFilter 			| **name** (String OR Object -unique key value or Object list of values with filter name/boolean as the key/value pair)<br/> **value** (Boolean *optional* -If *true* enables filter. If *false* disables the filters. Defaults to toggling the current state of the filter if undefined. *Note* if **name** is passed in as an object **value** is ignored and is substituted by the value in each entry in **name**)| |
+| removePredefinedFilter 			| **name** (String -unique key value for collection filter list)| |
+| **...With Paging Enabled...**      |  | |
+| nextPage      | | |
+| previousPage      | | |
+| goToPage      | **pageNumber** Integer -page number to navigate to. | Returns last page if **pageNumber** is greater than the number of pages & returns the first page if **pageNumber** is less than 1|
+
+
+<details>
+<summary>Code Examples</summary>
+``` javascript
+var predefinedFilterCollection = require('backbone-collection-predefined-filters');
+var models = [/*SomeArrayOfBackboneModels*/];
+var options = {
+    predefinedFilters: {
+        'test-filter-1': /*Some Filter function 1*/,
+        'test-filter-2': /*Some Filter function 2*/,
+        'test-filter-3': /*Some Filter function 3*/,
+        'test-filter-4': /*Some Filter function 4*/
+    },
+    appliedPredefinedFilters: {
+        'test-filter-1': true,
+        'test-filter-2': false,
+        'test-filter-4': false
+    },
+    pagingOptions: {
+        modelsPerPage: 10,
+        enableLooping: true,
+        startPage: 1
+    }
+};
+
+/*Declare Basic Collection No options passed in*/
+var exampleOneCollection = new predefinedFilterCollection(models);
+/*Add filter to Collection*/
+exampleOneCollection.addPredefinedFilter('test-filter-1', someTestFilterFunction1);
+/*Apply filter to Collection*/
+exampleOneCollection.applyPredefinedFilter('test-filter-1', true);
+/*Unapply filter from Collection*/
+exampleOneCollection.applyPredefinedFilter('test-filter-1', false);
+/*Remove filter from Collection*/
+exampleOneCollection.removePredefinedFilter('test-filter-1');
+
+/*Declare Basic Collection with options passed in*/
+var exampleTwoCollection = new predefinedFilterCollection(options);
+/* Set Applied filter status to multiple filters at once*/
+exampleTwoCollection.applyPredefinedFilter({
+    'test-filter-1': false,
+    'test-filter-2': true,
+    'test-filter-4': true
+});
+
+/*Declare Basic Collection with paging options passed in*/
+var exampleThreeCollection = new predefinedFilterCollection(options);
+/*Get Next Page of Models*/
+exampleThreeCollection.nextPage();
+/*Get Previous Page of Models*/
+exampleThreeCollection.previousPage();
+/*Get Page 5 of Models*/
+exampleThreeCollection.goToPage(5);
+```
+</details>
 
 ## <a name="tests"></a>Tests
-
 | Coverage Test Results 											| Unit Test Run											   |
 |     ---      														|		---    										   	   |
 | [![Lines Covered][coverage-lines-badge]][coverage-url]     		| [![Travis Build Number][travis-build-badge]][travis-url] |
@@ -36,7 +102,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ## <a name="filter-templates"></a>Filter Templates
 
-<#filter-templates-content>
+{{>filter-templates-content}}
 
 ## <a name="contributing"></a>Contributing
 
@@ -48,10 +114,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * **1.0.0** Initial release
 
 ## <a name="build-history"></a>Travis CI Build History
+{{>build-history-content}}
 
-<#build-history-content>
+[Return to Top](#pagetop)
 
-<#build-history-content-badge-urls>
+{{>build-history-content-badge-urls}}
 
 
 [main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"

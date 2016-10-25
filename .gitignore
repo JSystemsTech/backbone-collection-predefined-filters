@@ -14,3 +14,4 @@ npm-debug.log
 .metadata
 coverage-summary.json
 mocha-output.json
+version_number.txt
