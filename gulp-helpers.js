@@ -4,7 +4,99 @@ var badgeUrl = require('shields-badge-url-custom');
 var _ = require('underscore');
 var fs = require('fs');
 var util = require('gulp-util');
+var jsdocParser = require('comment-parser');
 
+var buildMDTableRowFromCommentSection = function(commentSection) {
+	var Notes = commentSection.description;
+	var ExpectedParameters = [];
+	var FunctionName = '';
+	_.each(commentSection.tags, function(tag) {
+		switch (tag.tag) {
+			case 'declaration':
+				FunctionName = tag.name;
+				break;
+			case 'property':
+				ExpectedParameters.push('**' + tag.name + '** (*' + tag.type + '* - ' + tag.description + ')');
+				break;
+			default:
+				break;
+		}
+	});
+	return '|' + FunctionName + '|' + ExpectedParameters.join('<br/>') + '|' + Notes + '|';
+};
+var buildOptionsTable = function(commentSection) {
+	var tableHeader = '| Option Name | Expected Input Type | Default Value | Notes |\n' +
+		'|     ---	    |	---    			  | --- | --- |\n';
+	var rows = [];
+	_.each(commentSection.tags, function(tag) {
+		var defaultValue = '';
+		var description = tag.description;
+		if (tag.description.indexOf('{{default}}') !== -1) {
+			defaultValue = tag.description.split('{{default}}')[1];
+			description = tag.description.split('{{default}}')[0];
+		}
+		rows.push('|' + tag.name + '|' + tag.type + '|' + defaultValue + '|' + description + '|');
+	});
+	return '##### Configuarable Option Parameters\n' + tableHeader + rows.join('\n') + '\n\n';
+};
+var addFilterOptionsTable = function(toTitleCase) {
+	var transform = function(file, callback) {
+		var filterName = file.path.split('filter_templates/')[1].split('/TEMPLATE_DOC.md')[0];
+		var filterTitle = toTitleCase(filterName.replace('_', ' ')) + ' Filter Template';
+		var contents = String(file.contents);
+		if (contents.trim() === '') {
+			contents = 'documentation for ' + filterTitle + ' still under construction';
+		}
+		var inputPath = './src/filter_templates/' + filterName + '/' + filterName.replace('_', '-') + '-filter.js';
+		getFile(inputPath, function(data) {
+			var output = String(file.contents);
+			var tableRows = [];
+			var constructorText = '';
+			var optionsTable = '';
+			_.each(jsdocParser(data), function(commentSection) {
+				if (commentSection.description.indexOf('{{constructor}}') !== -1) {
+					constructorText = commentSection.description.split('{{constructor}}')[1] + '\n\n';
+					optionsTable = buildOptionsTable(commentSection);
+				}
+			});
+			var examplesInputPath = './src/filter_templates/' + filterName + '/examples-doc.js';
+			getFile(examplesInputPath, function(examples) {
+
+				var codeExamples = '<details>\n<summary>Code Examples\n</summary>\n``` javascript\n' + examples + '\n```\n</details>'
+				contents = constructorText.trim() + '\n' + optionsTable + '\n' + codeExamples + '\n' + contents + '\n\n[Return to Top](#pagetop)';
+				file.contents = new Buffer(contents);
+				callback(null, file);
+			});
+		});
+	}
+	return eventStream.map(transform);
+};
+var buildMDTablefromJSDoc = function(mainSource) {
+	var tableHeader = '#### Available Collection Functions\n' +
+		'| Function Name | Expected Parameters | Notes |\n' +
+		'|     ---	    |	---    			  | --- |\n';
+	var transform = function(file, callback) {
+		getFile(mainSource, function(data) {
+			var output = String(file.contents);
+			var tableRows = [];
+			var constructorText = '';
+			var optionsTable = '';
+			_.each(jsdocParser(data), function(commentSection) {
+				if (commentSection.description.indexOf('{{constructor}}') !== -1) {
+					constructorText = commentSection.description.split('{{constructor}}')[1] + '\n\n';
+					optionsTable = buildOptionsTable(commentSection);
+				} else {
+					tableRows.push(buildMDTableRowFromCommentSection(commentSection));
+				}
+
+			});
+			output = output.replace('{{>available-collection-functions}}', constructorText + optionsTable + tableHeader + tableRows.join('\n'));
+			file.contents = new Buffer(output);
+			callback(null, file);
+		});
+	}
+	return eventStream.map(transform);
+};
 var getColorFromPercent = function(percent) {
 	var color = 'lightgrey';
 	if (percent <= 50) {
@@ -85,9 +177,9 @@ var setBadgeUrls = function() {
 var getFile = function(path, callback) {
 	fs.readFile(path, 'utf8', function(err, data) {
 		if (err) {
-			callback('');
+			return callback('');
 		}
-		callback(data);
+		return callback(data);
 	});
 }
 var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
@@ -172,5 +264,7 @@ module.exports = {
 	setFilterTemplateDocs: setFilterTemplateDocs,
 	addBuildHistory: addBuildHistory,
 	setBuildHistory: setBuildHistory,
-	getVersionNumber: getVersionNumber
+	getVersionNumber: getVersionNumber,
+	buildMDTablefromJSDoc: buildMDTablefromJSDoc,
+	addFilterOptionsTable: addFilterOptionsTable
 };

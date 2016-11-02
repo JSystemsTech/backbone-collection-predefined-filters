@@ -4,7 +4,7 @@
   "description": "An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require mocha-helper.js --recursive src",
+    "test": "mocha --require mocha-helper.js --recursive src/**/*-spec.js",
     "unit": "mocha -R mocha-spec-json-reporter --require mocha-helper.js --recursive src",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R mocha-spec-json-reporter src/**/*-spec.js",
     "report": "node_modules/istanbul/lib/cli.js report json-summary",
@@ -28,10 +28,11 @@
   ],
   "author": "JSystemsTech <jsystemstech@gmail.com> (http://jsystemstech.com)",
   "dependencies": {
-    "underscore": "^1.6.9",
+    "async": "^2.1.2",
     "backbone": "^1.2.2",
     "drilldown": "^0.1.1",
-    "moment": "^2.15.1"
+    "moment": "^2.15.1",
+    "underscore": "^1.6.9"
   },
   "license": "MIT",
   "bugs": {
@@ -40,6 +41,7 @@
   "homepage": "https://github.com/JSystemsTech/backbone-collection-predefined-filters#readme",
   "devDependencies": {
     "browserify": "^13.1.0",
+    "comment-parser": "^0.4.0",
     "coveralls": "^2.11.14",
     "event-stream": "3.3.4",
     "gh-badges": "^1.3.0",

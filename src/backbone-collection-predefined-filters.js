@@ -3,11 +3,11 @@
     /* istanbul ignore next */
     // CommonJS
     if (typeof exports == "object" && typeof require == "function") {
-        module.exports = factory(require("underscore"), require("backbone"), require("./filter_templates/filter-template-loader"));
+        module.exports = factory(require("underscore"), require("backbone"), require("async"), require("./filter_templates/filter-template-loader"));
     }
     // AMD
     else if (typeof define == "function" && define.amd) {
-        define(["underscore", "backbone", "./filter_templates/filter-template-loader"], factory);
+        define(["underscore", "backbone", "async", "./filter_templates/filter-template-loader"], factory);
     }
     // Browser
     else if (typeof _ !== "undefined" && typeof Backbone !== "undefined") {
@@ -32,9 +32,18 @@
             return PredefinedFilterCollection;
         };
     }
-}(function(_, Backbone, FilterTemplates) {
+}(function(_, Backbone, Async, FilterTemplates) {
     'use strict';
     var PredefinedFilterCollection = Backbone.PredefinedFilterCollection = Backbone.Collection.extend({
+        /**
+         * {{constructor}} Initialialize a new Instance of PredefinedFilterCollection with new Backbone.PredefinedFilterCollection(models, options)
+         *
+         * @property {Object} options.predefinedFilters An object list of user defined functions with unique filter names as keys {{default}} []
+         * @property {Object} options.appliedPredefinedFilters An object list of user defined booleans with unique filter names as keys which set the state of the currently applied filters {{default}} []
+         * @property {Number} options.pagingOptions.modelsPerPage The maximum number of models each page has {{default}} *The number of models in the collection (i.e. Show entire collection on 1 page)*
+         * @property {Boolean} options.pagingOptions.enableLooping If set to true calling **nextPage** or **previousPage** will cycle through the pages continiously. If set to false the start and last page are the lower and upper limits. {{default}} true
+         * @property {Number} options.pagingOptions.startPage The page number of models to render first {{default}} 1
+         */
         initialize: function(models, options) {
             this.options = options;
             this._initializeCollectionEventListeners();
@@ -55,7 +64,13 @@
                 this.predefinedFilters = this.options.predefinedFilters;
             }
             if (!_.isUndefined(this.options.appliedPredefinedFilters)) {
-                this._appliedPredefinedFilters = this.options.appliedPredefinedFilters;
+                var generatedAppliedPredefinedFilters = this.options.appliedPredefinedFilters;
+                _.each(this.options.appliedPredefinedFilters, function(status, name) {
+                    if (_.isUndefined(generatedAppliedPredefinedFilters['!' + name]) && name.charAt(0) !== '!') {
+                        generatedAppliedPredefinedFilters['!' + name] = false;
+                    }
+                });
+                this._appliedPredefinedFilters = generatedAppliedPredefinedFilters;
             }
             if (!_.isUndefined(this.options.pagingOptions)) {
                 this._usePaging = true;
@@ -70,6 +85,9 @@
                 this._currentPage = this._pagingOptions.startPage;
             }
             _.each(this.predefinedFilters, function(filter, eventName) {
+                if (_.isUndefined(self._appliedPredefinedFilters['!' + eventName])) {
+                    self._appliedPredefinedFilters['!' + eventName] = false;
+                }
                 if (_.isUndefined(self._appliedPredefinedFilters[eventName])) {
                     self._appliedPredefinedFilters[eventName] = false;
                 } else if (self._appliedPredefinedFilters[eventName] === true) {
@@ -115,30 +133,49 @@
             this._executeAppliedPredefinedFilters();
 
         },
-        _executeFilter: function(name, callback) {
-            this.models = this.filter(this.predefinedFilters[name]);
-            callback();
+        _executeFilter: function(models, name, callback) {
+            if (models.length === 0) {
+                return callback(null, models);
+            }
+            var firstCharInName = name.charAt(0);
+            if (firstCharInName === '!') {
+                return callback(null, _.reject(models, this.predefinedFilters[name.split(firstCharInName)[1]]));
+            }
+            return callback(null, _.filter(models, this.predefinedFilters[name]));
+        },
+        _buildAsyncFilterFunctionList: function() {
+            var self = this;
+            var filtersToExecute = _.pairs(_.omit(this._appliedPredefinedFilters, function(executeFilter) {
+                return !executeFilter;
+            }));
+            var asyncFiltersToExecute = [];
+            _.each(filtersToExecute, function(filterPair, index) {
+                if (index === 0) {
+                    asyncFiltersToExecute.push(function(callback) {
+                        self._executeFilter(self.models, filterPair[0], callback);
+                    });
+                } else {
+                    asyncFiltersToExecute.push(function(models, callback) {
+                        self._executeFilter(models, filterPair[0], callback);
+                    });
+                }
+            });
+            return asyncFiltersToExecute;
         },
         _executeAppliedPredefinedFilters: function() {
             this.models = _.clone(this.originalModels);
-            var filtersToExecute = _.omit(this._appliedPredefinedFilters, function(executeFilter) {
-                return !executeFilter;
-            });
-            var numberOfFiltersToExecute = Object.keys(filtersToExecute).length;
+            var filtersToExecute = this._buildAsyncFilterFunctionList();
+            var numberOfFiltersToExecute = filtersToExecute.length;
             if (numberOfFiltersToExecute > 0) {
                 this._predefinedFiltersApplied = true;
                 this.originalModels = this.models;
-                var numberOfFiltersToExecuted = 0;
                 var self = this;
-                _.each(filtersToExecute, function(value, filter) {
-                    self._executeFilter(filter, function() {
-                        numberOfFiltersToExecuted++;
-                        if (numberOfFiltersToExecuted === numberOfFiltersToExecute) {
-                            self._setPages();
-                            self.trigger('predefined-filters:updated');
-                        }
-                    });
+                Async.waterfall(filtersToExecute, function(error, results) {
+                    self.models = results;
+                    self._setPages();
+                    self.trigger('predefined-filters:updated');
                 });
+
             } else {
                 this._predefinedFiltersApplied = false;
                 this._setPages();
@@ -212,16 +249,29 @@
                 }
             }
         },
+        /**
+         * Sets Models to the next available Page. If options.pagingOptions.enableLooping is set to false then if the previous page number is < 1 the first page is returned.
+         * @declaration {Function} nextPage 
+         */
         nextPage: function() {
             if (this._usePaging && this.pagingInfo.hasNextPage) {
                 this.goToPage(this.pagingInfo.nextPage);
             }
         },
+        /**
+         * Sets Models to the next available Page. If options.pagingOptions.enableLooping is set to false then if the next available page number is > the total number of pages the last page is returned. 
+         * @declaration {Function} previousPage
+         */
         previousPage: function() {
             if (this._usePaging && this.pagingInfo.hasPreviousPage) {
                 this.goToPage(this.pagingInfo.previousPage);
             }
         },
+        /**
+         * Sets the current models to the specified page. If the input page number is > the total number of pages the last page is returned. If the input page number < 1 the first page is returned. 
+         * @declaration {Function} goToPage
+         * @property {Number} pageNumber Number of Page to navigate to.
+         */
         goToPage: function(pageNumber, onInitializeModels) {
             if (this._usePaging) {
                 if (pageNumber > this._pages.length) {
@@ -240,17 +290,45 @@
                 }
             }
         },
+        /**
+         * @declaration {Function} addPredefinedFilterFromTemplate
+         *
+         * @property {String} name unique key value for collection filter list
+         * @property {String} templateName Type of Filter to add from filter template list. *See [Filter Templates](#filter-templates) for more information about individual filter template types*
+         * @property {Object} options A configuation object passed to the filter template builder. *See [Filter Templates](#filter-templates) for more information about individual filter template options*
+         * @property {Boolean} applyImmediately Immediatelly applies the filter to the collection. Defaults to false if not specified
+         */
         addPredefinedFilterFromTemplate: function(name, templateName, options, applyImmediately) {
             this.addPredefinedFilter(name, FilterTemplates[templateName](options, this), applyImmediately);
         },
+        /**
+         * @declaration {Function} addPredefinedFilter
+         *
+         * @property {String} name unique key value for collection filter list
+         * @property {Function} filterFunction A function that takes in a model as a parameter and returns a boolean
+         * @property {Boolean/String} applyImmediately Immediatelly applies the filter to the collection. Defaults to false if not specified. Pass in a string value of '!' to immediately apply the NOT filter. *See [Using NOT filters](#not-filter-info) for more information* 
+         */
         addPredefinedFilter: function(name, filterFunction, applyImmediately) {
             this._appliedPredefinedFilters[name] = applyImmediately || false;
+            var notFilterName = '!' + name;
+            this._appliedPredefinedFilters[notFilterName] = false;
             this.predefinedFilters[name] = filterFunction;
             var self = this;
             if (!_.isUndefined(applyImmediately) && applyImmediately === true) {
                 self.applyPredefinedFilter(name, true);
+            } else if (!_.isUndefined(applyImmediately) && applyImmediately === '!') {
+                this._appliedPredefinedFilters[name] = false;
+                this._appliedPredefinedFilters[notFilterName] = true;
+                self.applyPredefinedFilter(notFilterName, true);
             }
         },
+        /**
+         * *Note* if **name** is passed in as an object **value** is ignored and is substituted by the value in each entry in **name**)
+         * @declaration {Function} applyPredefinedFilter
+         *
+         * @property {String/Object} name unique key value or Object list of values with filter name/boolean as the key/value pair
+         * @property {Boolean} value If *true* enables filter. If *false* disables the filters. Defaults to toggling the current state of the filter if undefined 
+         */
         applyPredefinedFilter: function(name, value) {
             var self = this;
             var useObject = _.isObject(name) && !_.isArray(name) && !_.isFunction(name) && !_.isString(name);
@@ -260,16 +338,25 @@
             _.each(name, function(filter, filterName) {
                 if (useObject) {
                     self._appliedPredefinedFilters[filterName] = value || filter;
+                } else if (!_.isUndefined(value)) {
+                    self._appliedPredefinedFilters[filter] = value;
                 } else {
-                    self._appliedPredefinedFilters[filter] = value || !self._appliedPredefinedFilters[filter];
+                    self._appliedPredefinedFilters[filter] = !self._appliedPredefinedFilters[filter];
                 }
             });
             this._executeAppliedPredefinedFilters();
         },
+        /**
+         * @declaration {Function} addPredefinedFilter
+         *
+         * @property {String} name unique key value for collection filter list
+         */
         removePredefinedFilter: function(name) {
-            this.predefinedFilters = _.omit(this.predefinedFilters, name);
-            this._appliedPredefinedFilters = _.omit(this._appliedPredefinedFilters, name);
-            this._executeAppliedPredefinedFilters();
+            if (name.charAt(0) !== '!') {
+                this.predefinedFilters = _.omit(this.predefinedFilters, name);
+                this._appliedPredefinedFilters = _.omit(_.omit(this._appliedPredefinedFilters, name), '!' + name);
+                this._executeAppliedPredefinedFilters();
+            }
         }
     });
     return PredefinedFilterCollection;

@@ -21,6 +21,24 @@
       ignore: false
     };
   };
+  /**
+   * {{constructor}} Add new Date Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', *data-range-filter-options* ); Below are the following options parameters.
+   *
+   * @property {String} options.start.value A date string in moment format {{default}} '1970/01/01 00:00:00'
+   * @property {String} options.start.format A String defining the format of *options.start.value* . {{default}} 'YYYY/MM/DD HH:mm:ss'
+   * @property {Boolean} options.start.isInUTC Flag to set whether or not the formated date string is in UTC time {{default}} true
+   * @property {Boolean} options.start.includeInRange if set to *true* comparedValue must be >= start date. If set to *false* comparedValue must be > start date. {{default}} true
+   * @property {Boolean} options.start.ignore Completely ignores the start date boundry. Use this option if you are trying to find values < or <= the end date. {{default}} false
+   * @property {String} options.end.value A date string in moment format {{default}} 'now'
+   * @property {String} options.end.format A String defining the format of *options.end.value* . {{default}} 'YYYY/MM/DD HH:mm:ss'
+   * @property {Boolean} options.end.isInUTC Flag to set whether or not the formated date string is in UTC time {{default}} true
+   * @property {Boolean} options.end.includeInRange if set to *true* comparedValue must be <= end date. If set to *false* comparedValue must be < end date. {{default}} true
+   * @property {Boolean} options.end.ignore Completely ignores the end date boundry. Use this option if you are trying to find values > or >= the start date. {{default}} false
+   * @property {Array} options.filterableModelAttributes Array of Objects containing the list of model attribute to include in the filter and the configuration for those modle attributes
+   * @property {String} options.filterableModelAttributes[n].attribute String containing model attribute name. Example *'someDate'* is equivalent to returning *model.get('someDate')*. Nested values are supported. If you need to retrieve a nested value pass the string as follows 'someData.date'. Equivalent to returning *model.get('someData').date*. You can keep adding to the nested value layers as such: 'someData.moreData.evenMoreDate. ... .finallyMyDateAttribute' equivalently calls *model.get('someData').moreData.evenMoreDate. ... .finallyMyDateAttribute* .{{default}} []   
+   * @property {String} options.filterableModelAttributes[n].format A String defining the format of the model attribute value. {{default}} 'YYYY/MM/DD HH:mm:ss'
+   * @property {Boolean} options.filterableModelAttributes[n].isInUTC Flag to set whether or not the formated date string is in UTC time {{default}} true
+   */
   var dateRangeFilterBuilder = function(filter_options) {
     var options = _.defaults(filter_options, {
       start: _.defaults(filter_options.start || {}, getDefaultsConfig('1970/01/01 00:00:00')),

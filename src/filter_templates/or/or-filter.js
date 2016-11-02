@@ -11,6 +11,12 @@
   }
 }(function(_, moment) {
   'use strict';
+  /**
+   * {{constructor}} Add new Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-range-filter-name', 'Or', *or-filter-options* );
+   * Below are the following options parameters.
+   *
+   * @property {Array} options.filters Array of Strings listing out the filter names. Any model that is returned from the listed filters is included. {{default}} []
+   */
   var orFilterBuilder = function(filter_options, collection) {
     var options = _.defaults(filter_options, {
       filters: []

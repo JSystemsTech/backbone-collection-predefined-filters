@@ -18,18 +18,36 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 'test-filter-4': false
             }
         };
+        var options2 = {
+            predefinedFilters: {
+                'test-filter-1': utils.filter1,
+                'test-filter-2': utils.filter2,
+                'test-filter-3': utils.filter3,
+                'test-filter-4': utils.filter4
+            },
+            appliedPredefinedFilters: {
+                'test-filter-1': false,
+                'test-filter-2': false,
+                'test-filter-4': false,
+                '!test-filter-2': true
+            }
+        };
         var testCollection_base = utils.getBaseCollection(true);
         var testCollection_base2 = utils.getBaseCollection(true);
         var testCollection_base2b = utils.getBaseCollection(true);
         var testCollection_base2c = utils.getBaseCollection(true);
+        var testCollection_base2d = utils.getBaseCollection(true);
         var testCollection_base3 = utils.getBaseCollection(true);
         var testCollection_base4 = utils.getBaseCollection(true);
         var testCollection_base5 = utils.getBaseCollection(true);
         var testCollection_base6 = utils.getBaseCollection(true);
         var testCollection_base7 = utils.getBaseCollection(true);
+        var testCollection_base7b = utils.getBaseCollection(true);
         var testCollection_base8 = utils.getBaseCollection();
+        var testCollection_base8b = utils.getBaseCollection();
         var testCollection_base9 = utils.getBaseCollection(false, options);
         var testCollection_base10 = utils.getBaseCollection(true);
+        var testCollection_base11 = utils.getBaseCollection(false, options2);
 
         describe('* Collection Models are set', function() {
             it('Returns expected number of models', function() {
@@ -78,6 +96,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             it('Apply utils.filter4 is set to false', function() {
                 expect(testCollection_base._appliedPredefinedFilters['test-filter-4']).to.equal(false);
             });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+            });
         });
         describe('* Apply Filter 1', function() {
             testCollection_base2.applyPredefinedFilter('test-filter-1', true);
@@ -94,6 +124,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 expect(testCollection_base2._appliedPredefinedFilters['test-filter-3']).to.equal(false);
             });
             it('Apply utils.filter4 is set to false', function() {
+                expect(testCollection_base2._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base2._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base2._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base2._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
                 expect(testCollection_base2._appliedPredefinedFilters['test-filter-4']).to.equal(false);
             });
             it('Returns expected number of models', function() {
@@ -137,6 +179,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             it('Apply utils.filter4 is set to false', function() {
                 expect(testCollection_base2b._appliedPredefinedFilters['test-filter-4']).to.equal(false);
             });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base2b._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base2b._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base2b._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base2b._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+            });
             it('Returns expected number of models', function() {
                 expect(testCollection_base2b.models.length).to.equal(1);
             });
@@ -158,36 +212,101 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 });
             });
         });
-        describe('* Apply Filter 3 as object parameter and verify sort order still works', function() {
-            testCollection_base2c.comparator = function(model) {
-                return -model.get("testIntData");
-            };
-            testCollection_base2c.applyPredefinedFilter({
-                'test-filter-3': true
-            });
+        describe('* Apply !Filter 1', function() {
+            testCollection_base2c.applyPredefinedFilter('!test-filter-1', true);
             it('_predefinedFiltersApplied is set to true', function() {
                 expect(testCollection_base2c._predefinedFiltersApplied).to.equal(true);
             });
-            it('Apply utils.filter1 is set to true', function() {
+            it('Apply utils.filter1 is set to false', function() {
                 expect(testCollection_base2c._appliedPredefinedFilters['test-filter-1']).to.equal(false);
             });
             it('Apply utils.filter2 is set to false', function() {
                 expect(testCollection_base2c._appliedPredefinedFilters['test-filter-2']).to.equal(false);
             });
-            it('Apply utils.filter3 is set to true', function() {
-                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-3']).to.equal(true);
+            it('Apply utils.filter3 is set to false', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-3']).to.equal(false);
             });
             it('Apply utils.filter4 is set to false', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Apply !utils.filter1 is set to true', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['!test-filter-1']).to.equal(true);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base2c._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
                 expect(testCollection_base2c._appliedPredefinedFilters['test-filter-4']).to.equal(false);
             });
             it('Returns expected number of models', function() {
                 expect(testCollection_base2c.models.length).to.equal(2);
             });
+            it('Returns expected model B', function() {
+                expect(utils.hasModel(testCollection_base2c, utils.modelAttributes.modelB)).to.equal(true);
+            });
+            it('Returns expected model C', function() {
+                expect(utils.hasModel(testCollection_base2c, utils.modelAttributes.modelC)).to.equal(true);
+            });
+            describe('- Original Models is unaffected', function() {
+                it('Returns expected number of models', function() {
+                    expect(testCollection_base2c.originalModels.length).to.equal(3);
+                });
+                it('Returns expected model_1', function() {
+                    expect(utils.hasModel(testCollection_base2c, utils.modelAttributes.modelA, true)).to.equal(true);
+                });
+                it('Returns expected model_2', function() {
+                    expect(utils.hasModel(testCollection_base2c, utils.modelAttributes.modelB, true)).to.equal(true);
+                });
+                it('Returns expected model_3', function() {
+                    expect(utils.hasModel(testCollection_base2c, utils.modelAttributes.modelC, true)).to.equal(true);
+                });
+            });
+        });
+        describe('* Apply Filter 3 as object parameter and verify sort order still works', function() {
+            testCollection_base2d.comparator = function(model) {
+                return -model.get("testIntData");
+            };
+            testCollection_base2d.applyPredefinedFilter({
+                'test-filter-3': true
+            });
+            it('_predefinedFiltersApplied is set to true', function() {
+                expect(testCollection_base2d._predefinedFiltersApplied).to.equal(true);
+            });
+            it('Apply utils.filter1 is set to true', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['test-filter-1']).to.equal(false);
+            });
+            it('Apply utils.filter2 is set to false', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['test-filter-2']).to.equal(false);
+            });
+            it('Apply utils.filter3 is set to true', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['test-filter-3']).to.equal(true);
+            });
+            it('Apply utils.filter4 is set to false', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base2d._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+            });
+            it('Returns expected number of models', function() {
+                expect(testCollection_base2d.models.length).to.equal(2);
+            });
             it('Returns expected first model', function() {
-                expect(testCollection_base2c.models[0].get('testIntData')).to.equal(utils.modelAttributes.modelC.testIntData);
+                expect(testCollection_base2d.models[0].get('testIntData')).to.equal(utils.modelAttributes.modelC.testIntData);
             });
             it('Returns expected second model', function() {
-                expect(testCollection_base2c.models[1].get('testIntData')).to.equal(utils.modelAttributes.modelA.testIntData);
+                expect(testCollection_base2d.models[1].get('testIntData')).to.equal(utils.modelAttributes.modelA.testIntData);
             });
         });
         describe('* Unapply Filter 1', function() {
@@ -196,7 +315,7 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             it('_predefinedFiltersApplied is set to false', function() {
                 expect(testCollection_base3._predefinedFiltersApplied).to.equal(false);
             });
-            it('Apply utils.filter1 is set to true', function() {
+            it('Apply utils.filter1 is set to false', function() {
                 expect(testCollection_base3._appliedPredefinedFilters['test-filter-1']).to.equal(false);
             });
             it('Apply utils.filter2 is set to false', function() {
@@ -207,6 +326,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             });
             it('Apply utils.filter4 is set to false', function() {
                 expect(testCollection_base3._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base3._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base3._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base3._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base3._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
             });
             it('Returns expected number of models', function() {
                 expect(testCollection_base3.models.length).to.equal(3);
@@ -256,6 +387,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             it('Apply utils.filter4 is set to false', function() {
                 expect(testCollection_base4._appliedPredefinedFilters['test-filter-4']).to.equal(false);
             });
+            it('Apply !utils.filter1 is undefined', function() {
+                expect(testCollection_base4._appliedPredefinedFilters['!test-filter-1']).to.equal(undefined);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base4._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base4._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base4._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+            });
             it('Returns expected number of models', function() {
                 expect(testCollection_base4.models.length).to.equal(3);
             });
@@ -301,6 +444,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 it('Apply utils.filter4 is set to false', function() {
                     expect(testCollection_base5._appliedPredefinedFilters['test-filter-4']).to.equal(false);
                 });
+                it('Apply !utils.filter1 is set to false', function() {
+                    expect(testCollection_base5._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+                });
+                it('Apply !utils.filter2 is set to false', function() {
+                    expect(testCollection_base5._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+                });
+                it('Apply !utils.filter3 is set to false', function() {
+                    expect(testCollection_base5._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+                });
+                it('Apply !utils.filter4 is set to false', function() {
+                    expect(testCollection_base5._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+                });
                 it('Returns expected number of models', function() {
                     expect(testCollection_base5.models.length).to.equal(1);
                 });
@@ -328,7 +483,7 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 it('_predefinedFiltersApplied is set to false', function() {
                     expect(testCollection_base6._predefinedFiltersApplied).to.equal(false);
                 });
-                it('Apply utils.filter1 is set to true', function() {
+                it('Apply utils.filter1 is set to false', function() {
                     expect(testCollection_base6._appliedPredefinedFilters['test-filter-1']).to.equal(false);
                 });
                 it('Apply utils.filter2 is set to false', function() {
@@ -339,6 +494,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 });
                 it('Apply utils.filter4 is set to false', function() {
                     expect(testCollection_base6._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+                });
+                it('Apply !utils.filter1 is set to false', function() {
+                    expect(testCollection_base6._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+                });
+                it('Apply !utils.filter2 is set to false', function() {
+                    expect(testCollection_base6._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+                });
+                it('Apply !utils.filter3 is set to false', function() {
+                    expect(testCollection_base6._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+                });
+                it('Apply !utils.filter4 is set to false', function() {
+                    expect(testCollection_base6._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
                 });
                 it('Returns expected number of models', function() {
                     expect(testCollection_base6.models.length).to.equal(3);
@@ -388,6 +555,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 it('Apply utils.filter4 is set to false', function() {
                     expect(testCollection_base7._appliedPredefinedFilters['test-filter-4']).to.equal(false);
                 });
+                it('Apply !utils.filter1 is undefined', function() {
+                    expect(testCollection_base7._appliedPredefinedFilters['!test-filter-1']).to.equal(undefined);
+                });
+                it('Apply !utils.filter2 is set to false', function() {
+                    expect(testCollection_base7._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+                });
+                it('Apply !utils.filter3 is set to false', function() {
+                    expect(testCollection_base7._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+                });
+                it('Apply !utils.filter4 is set to false', function() {
+                    expect(testCollection_base7._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+                });
                 it('Returns expected number of models', function() {
                     expect(testCollection_base7.models.length).to.equal(3);
                 });
@@ -415,6 +594,60 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                     });
                 });
             });
+            describe('* Attmpt to Remove !Filter 1', function() {
+                testCollection_base7b.applyPredefinedFilter('test-filter-1', true);
+                testCollection_base7b.trigger('predefined-filters:remove', '!test-filter-1');
+                it('_predefinedFiltersApplied is set to true', function() {
+                    expect(testCollection_base7b._predefinedFiltersApplied).to.equal(true);
+                });
+                it('Predefined utils.filter1 is not undefined', function() {
+                    expect(_.isUndefined(testCollection_base7b.predefinedFilters['test-filter-1'])).to.equal(false);
+                });
+                it('Apply utils.filter1 is true', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['test-filter-1']).to.equal(true);
+                });
+                it('Apply utils.filter2 is set to false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['test-filter-2']).to.equal(false);
+                });
+                it('Apply utils.filter3 is set to false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['test-filter-3']).to.equal(false);
+                });
+                it('Apply utils.filter4 is set to false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+                });
+                it('Apply !utils.filter1 is false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+                });
+                it('Apply !utils.filter2 is set to false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+                });
+                it('Apply !utils.filter3 is set to false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+                });
+                it('Apply !utils.filter4 is set to false', function() {
+                    expect(testCollection_base7b._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+                });
+                it('Returns expected number of models', function() {
+                    expect(testCollection_base7b.models.length).to.equal(1);
+                });
+                it('Returns expected model', function() {
+                    expect(utils.hasModel(testCollection_base7b, utils.modelAttributes.modelA)).to.equal(true);
+                });
+                describe('> Original Models is unaffected', function() {
+                    it('Returns expected number of models', function() {
+                        expect(testCollection_base7b.originalModels.length).to.equal(3);
+                    });
+                    it('Returns expected model_1', function() {
+                        expect(utils.hasModel(testCollection_base7b, utils.modelAttributes.modelA, true)).to.equal(true);
+                    });
+                    it('Returns expected model_2', function() {
+                        expect(utils.hasModel(testCollection_base7b, utils.modelAttributes.modelB, true)).to.equal(true);
+                    });
+                    it('Returns expected model_3', function() {
+                        expect(utils.hasModel(testCollection_base7b, utils.modelAttributes.modelC, true)).to.equal(true);
+                    });
+                });
+            });
             describe('- Add Filters', function() {
                 testCollection_base8.trigger('predefined-filters:add', 'test-filter-1', utils.filter1, false);
                 testCollection_base8.trigger('predefined-filters:add', 'test-filter-2', utils.filter2, false);
@@ -432,8 +665,72 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                 it('Apply utils.filter3 is set to false', function() {
                     expect(testCollection_base8._appliedPredefinedFilters['test-filter-3']).to.equal(false);
                 });
-                it('Apply utils.filter4 is set to false', function() {
+                it('Apply !utils.filter4 is set to false', function() {
                     expect(testCollection_base8._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+                });
+                it('Apply !utils.filter1 is set to false', function() {
+                    expect(testCollection_base8._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+                });
+                it('Apply !utils.filter2 is set to false', function() {
+                    expect(testCollection_base8._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+                });
+                it('Apply !utils.filter3 is set to false', function() {
+                    expect(testCollection_base8._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+                });
+                it('Apply !utils.filter4 is set to false', function() {
+                    expect(testCollection_base8._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+                });
+            });
+            describe('- Add Filters and imediately apply not filter for filter-2 and filter-4', function() {
+                testCollection_base8b.trigger('predefined-filters:add', 'test-filter-1', utils.filter1, true);
+                testCollection_base8b.trigger('predefined-filters:add', 'test-filter-2', utils.filter2, '!');
+                testCollection_base8b.trigger('predefined-filters:add', 'test-filter-3', utils.filter3, true);
+                testCollection_base8b.trigger('predefined-filters:add', 'test-filter-4', utils.filter4, '!');
+                testCollection_base8b.applyPredefinedFilter('test-filter-4');
+                testCollection_base8b.applyPredefinedFilter('!test-filter-3');
+                it('_predefinedFiltersApplied is set to false', function() {
+                    expect(testCollection_base8._predefinedFiltersApplied).to.equal(false);
+                });
+                it('Apply utils.filter1 is set to true', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['test-filter-1']).to.equal(true);
+                });
+                it('Apply utils.filter2 is set to false', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['test-filter-2']).to.equal(false);
+                });
+                it('Apply utils.filter3 is set to true', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['test-filter-3']).to.equal(true);
+                });
+                it('Apply !utils.filter4 is set to true', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['test-filter-4']).to.equal(true);
+                });
+                it('Apply !utils.filter1 is set to false', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+                });
+                it('Apply !utils.filter2 is set to true', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['!test-filter-2']).to.equal(true);
+                });
+                it('Apply !utils.filter3 is set to true', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['!test-filter-3']).to.equal(true);
+                });
+                it('Apply !utils.filter4 is set to true', function() {
+                    expect(testCollection_base8b._appliedPredefinedFilters['!test-filter-4']).to.equal(true);
+                });
+                it('Returns expected number of models', function() {
+                    expect(testCollection_base8b.models.length).to.equal(0);
+                });
+                describe('> Original Models is unaffected', function() {
+                    it('Returns expected number of models', function() {
+                        expect(testCollection_base8b.originalModels.length).to.equal(3);
+                    });
+                    it('Returns expected model_1', function() {
+                        expect(utils.hasModel(testCollection_base8b, utils.modelAttributes.modelA, true)).to.equal(true);
+                    });
+                    it('Returns expected model_2', function() {
+                        expect(utils.hasModel(testCollection_base8b, utils.modelAttributes.modelB, true)).to.equal(true);
+                    });
+                    it('Returns expected model_3', function() {
+                        expect(utils.hasModel(testCollection_base8b, utils.modelAttributes.modelC, true)).to.equal(true);
+                    });
                 });
             });
         });
@@ -453,6 +750,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             });
             it('Apply utils.filter4 is set to false', function() {
                 expect(testCollection_base9._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base9._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base9._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base9._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base9._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
             });
             it('Returns expected number of models', function() {
                 expect(testCollection_base9.models.length).to.equal(1);
@@ -494,6 +803,18 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
             it('Apply utils.filter4 is set to false', function() {
                 expect(testCollection_base10._appliedPredefinedFilters['test-filter-4']).to.equal(false);
             });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base10._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to false', function() {
+                expect(testCollection_base10._appliedPredefinedFilters['!test-filter-2']).to.equal(false);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base10._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base10._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+            });
             it('Returns expected number of models', function() {
                 expect(testCollection_base10.models.length).to.equal(1);
             });
@@ -518,6 +839,59 @@ describe('### Testing Predefined Filter Collection Functionality with base data 
                         testIntData: 2,
                         testStrData: 'this is test E in 2b'
                     }, true)).to.equal(true);
+                });
+            });
+        });
+        describe('* Initialize with options and use of NOT filter', function() {
+            testCollection_base11.applyPredefinedFilter('test-filter-1', false);
+            it('_predefinedFiltersApplied is set to true', function() {
+                expect(testCollection_base11._predefinedFiltersApplied).to.equal(true);
+            });
+            it('Apply utils.filter1 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['test-filter-1']).to.equal(false);
+            });
+            it('Apply utils.filter2 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['test-filter-2']).to.equal(false);
+            });
+            it('Apply utils.filter3 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['test-filter-3']).to.equal(false);
+            });
+            it('Apply utils.filter4 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['test-filter-4']).to.equal(false);
+            });
+            it('Apply !utils.filter1 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['!test-filter-1']).to.equal(false);
+            });
+            it('Apply !utils.filter2 is set to true', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['!test-filter-2']).to.equal(true);
+            });
+            it('Apply !utils.filter3 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['!test-filter-3']).to.equal(false);
+            });
+            it('Apply !utils.filter4 is set to false', function() {
+                expect(testCollection_base11._appliedPredefinedFilters['!test-filter-4']).to.equal(false);
+            });
+            it('Returns expected number of models', function() {
+                expect(testCollection_base11.models.length).to.equal(2);
+            });
+            it('Returns expected model A', function() {
+                expect(utils.hasModel(testCollection_base11, utils.modelAttributes.modelA)).to.equal(true);
+            });
+            it('Returns expected model B', function() {
+                expect(utils.hasModel(testCollection_base11, utils.modelAttributes.modelB)).to.equal(true);
+            });
+            describe('- Original Models is unaffected', function() {
+                it('Returns expected number of models', function() {
+                    expect(testCollection_base11.originalModels.length).to.equal(3);
+                });
+                it('Returns expected model_1', function() {
+                    expect(utils.hasModel(testCollection_base11, utils.modelAttributes.modelA, true)).to.equal(true);
+                });
+                it('Returns expected model_2', function() {
+                    expect(utils.hasModel(testCollection_base11, utils.modelAttributes.modelB, true)).to.equal(true);
+                });
+                it('Returns expected model_3', function() {
+                    expect(utils.hasModel(testCollection_base11, utils.modelAttributes.modelC, true)).to.equal(true);
                 });
             });
         });

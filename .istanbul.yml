@@ -4,7 +4,7 @@ instrumentation:
     extensions:
         - .js
     default-excludes: true
-    excludes: ['src/**/*-spec.js','test/*.js','test/*.json']
+    excludes: ['src/**/*-spec.js','src/filter_templates/**/examples-doc.js','test/*.js','test/*.json']
     embed-source: false
     variable: __coverage__
     compact: true

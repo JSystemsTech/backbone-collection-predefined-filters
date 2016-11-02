@@ -23,17 +23,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ## <a name="usage"></a>Usage
 
-#### Available Collection Functions
-| Function Name | Expected Parameters | Notes |
-|     ---	    |	---    			  | --- |
-| addPredefinedFilter 				| **name** (String -unique key value for collection filter list)<br/>**filterFunction** (Function - A function that takes in a model as a parameter and returns a boolean)<br/>**applyImmediately** (Boolean *optional* - Immediatelly applies the filter to the collection. Defaults to false if not specified	| |
-| addPredefinedFilterFromTemplate 	| **name** (String -unique key value for collection filter list)<br/>**templateName** (String - Type of Filter to add from filter template list. *See [Filter Templates](#filter-templates) for more information about individual filter template types*)<br/>**options** (Object - A configuation object passed to the filter template builder. *See [Filter Templates](#filter-templates) for more information about individual filter template options*)<br/>**applyImmediately** (Boolean *optional* - Immediatelly applies the filter to the collection. Defaults to false if not specified	| |
-| applyPredefinedFilter 			| **name** (String OR Object -unique key value or Object list of values with filter name/boolean as the key/value pair)<br/> **value** (Boolean *optional* -If *true* enables filter. If *false* disables the filters. Defaults to toggling the current state of the filter if undefined. *Note* if **name** is passed in as an object **value** is ignored and is substituted by the value in each entry in **name**)| |
-| removePredefinedFilter 			| **name** (String -unique key value for collection filter list)| |
-| **...With Paging Enabled...**      |  | |
-| nextPage      | | |
-| previousPage      | | |
-| goToPage      | **pageNumber** Integer -page number to navigate to. | Returns last page if **pageNumber** is greater than the number of pages & returns the first page if **pageNumber** is less than 1|
+{{>available-collection-functions}}
 
 
 <details>
@@ -114,8 +104,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * **1.0.0** Initial release
 
 ## <a name="build-history"></a>Travis CI Build History
+<details>
+<summary>Show Build History Table</summary>
 {{>build-history-content}}
-
+</details>
 [Return to Top](#pagetop)
 
 {{>build-history-content-badge-urls}}
