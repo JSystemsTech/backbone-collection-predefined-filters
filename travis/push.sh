@@ -13,7 +13,8 @@ then
   git checkout master
   git merge HEAD@{1}
   git remote add origin-master https://"${GH_TOKEN}"@github.com/JSystemsTech/backbone-collection-predefined-filters.git > /dev/null 2>&1
+  git push origin :refs/tags/"$buildnumber"
   git tag -fa "$buildnumber"
-  git push -f --quiet --set-upstream origin-master master tag "$buildnumber"
+  git push --quiet --set-upstream origin-master master tag "$buildnumber"
   echo -e "Pushed Post Build files update\n"
 fi
