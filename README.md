@@ -282,6 +282,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 <summary>Show Build History Table</summary>
 | Build Number : Result |
 | --- 					  |
+| [![Travis Build Number 44][build-history-badge-44-url]][travis-builds-url] |
 | [![Travis Build Number 43][build-history-badge-43-url]][travis-builds-url] |
 | [![Travis Build Number 42][build-history-badge-42-url]][travis-builds-url] |
 | [![Travis Build Number 41][build-history-badge-41-url]][travis-builds-url] |
@@ -329,6 +330,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 </details>
 [Return to Top](#pagetop)
 
+[build-history-badge-44-url]: https://img.shields.io/badge/TravisCI%201.0.0.44-Passed-brightgreen.svg?style=flat
 [build-history-badge-43-url]: https://img.shields.io/badge/TravisCI%201.0.0.43-Passed-brightgreen.svg?style=flat
 [build-history-badge-42-url]: https://img.shields.io/badge/TravisCI%201.0.0.42-Passed-brightgreen.svg?style=flat
 [build-history-badge-41-url]: https://img.shields.io/badge/TravisCI%201.0.0.41-Unknown-yellow.svg?style=flat
@@ -400,4 +402,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-43-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-44-4B0082.svg?style=flat
