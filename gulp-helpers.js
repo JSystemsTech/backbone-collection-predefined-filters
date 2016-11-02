@@ -193,10 +193,10 @@ var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
 	}
 	return eventStream.map(transform);
 };
-var getVersionNumber = function() {
+var getVersionNumber = function(buildNumber) {
 	var transform = function(file, callback) {
 		var data = JSON.parse(String(file.contents));
-		file.contents = new Buffer(data.version);
+		file.contents = new Buffer(data.version + '.' + buildNumber);
 		callback(null, file);
 	}
 	return eventStream.map(transform);

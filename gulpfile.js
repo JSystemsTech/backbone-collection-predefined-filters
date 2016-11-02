@@ -89,7 +89,7 @@ gulp.task('documentation', function() {
 });
 gulp.task('getversionnumber', function() {
     return gulp.src(['./package.json'])
-        .pipe(gulpHelpers.getVersionNumber())
+        .pipe(gulpHelpers.getVersionNumber(util.env.buildnumber))
         .pipe(buffer())
         .pipe(rename('version_number.txt'))
         .pipe(gulp.dest('./'));
