@@ -7,14 +7,13 @@ then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
   buildnumber=`cat version_number.txt`
-
   git add build_history.json
   git add README.md
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed README.md & build_history.json update to master [ci skip]"
   git checkout master
   git merge HEAD@{1}
   git remote add origin-master https://"${GH_TOKEN}"@github.com/JSystemsTech/backbone-collection-predefined-filters.git > /dev/null 2>&1
-  git tag "$buildnumber"
+  git tag -fa "$buildnumber"
   git push -f --quiet --set-upstream origin-master master tag "$buildnumber"
   echo -e "Pushed Post Build files update\n"
 fi
