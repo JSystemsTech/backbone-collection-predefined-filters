@@ -26,17 +26,27 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ## <a name="usage"></a>Usage
 
+ Initialialize a new Instance of PredefinedFilterCollection with new Backbone.PredefinedFilterCollection(models, options)
+
+##### Configuarable Option Parameters
+| Option Name | Expected Input Type | Default Value | Notes |
+|     ---	    |	---    			  | --- | --- |
+|options.predefinedFilters|Object| []|An object list of user defined functions with unique filter names as keys |
+|options.appliedPredefinedFilters|Object| []|An object list of user defined booleans with unique filter names as keys which set the state of the currently applied filters |
+|options.pagingOptions.modelsPerPage|Number| *The number of models in the collection (i.e. Show entire collection on 1 page)*|The maximum number of models each page has |
+|options.pagingOptions.enableLooping|Boolean| true|If set to true calling **nextPage** or **previousPage** will cycle through the pages continiously. If set to false the start and last page are the lower and upper limits. |
+|options.pagingOptions.startPage|Number| 1|The page number of models to render first |
+
 #### Available Collection Functions
 | Function Name | Expected Parameters | Notes |
 |     ---	    |	---    			  | --- |
-| addPredefinedFilter 				| **name** (String -unique key value for collection filter list)<br/>**filterFunction** (Function - A function that takes in a model as a parameter and returns a boolean)<br/>**applyImmediately** (Boolean *optional* - Immediatelly applies the filter to the collection. Defaults to false if not specified	| |
-| addPredefinedFilterFromTemplate 	| **name** (String -unique key value for collection filter list)<br/>**templateName** (String - Type of Filter to add from filter template list. *See [Filter Templates](#filter-templates) for more information about individual filter template types*)<br/>**options** (Object - A configuation object passed to the filter template builder. *See [Filter Templates](#filter-templates) for more information about individual filter template options*)<br/>**applyImmediately** (Boolean *optional* - Immediatelly applies the filter to the collection. Defaults to false if not specified	| |
-| applyPredefinedFilter 			| **name** (String OR Object -unique key value or Object list of values with filter name/boolean as the key/value pair)<br/> **value** (Boolean *optional* -If *true* enables filter. If *false* disables the filters. Defaults to toggling the current state of the filter if undefined. *Note* if **name** is passed in as an object **value** is ignored and is substituted by the value in each entry in **name**)| |
-| removePredefinedFilter 			| **name** (String -unique key value for collection filter list)| |
-| **...With Paging Enabled...**      |  | |
-| nextPage      | | |
-| previousPage      | | |
-| goToPage      | **pageNumber** Integer -page number to navigate to. | Returns last page if **pageNumber** is greater than the number of pages & returns the first page if **pageNumber** is less than 1|
+|nextPage||Sets Models to the next available Page. If options.pagingOptions.enableLooping is set to false then if the previous page number is < 1 the first page is returned.|
+|previousPage||Sets Models to the next available Page. If options.pagingOptions.enableLooping is set to false then if the next available page number is > the total number of pages the last page is returned.|
+|goToPage|**pageNumber** (*Number* - Number of Page to navigate to.)|Sets the current models to the specified page. If the input page number is > the total number of pages the last page is returned. If the input page number < 1 the first page is returned.|
+|addPredefinedFilterFromTemplate|**name** (*String* - unique key value for collection filter list)<br/>**templateName** (*String* - Type of Filter to add from filter template list. *See [Filter Templates](#filter-templates) for more information about individual filter template types*)<br/>**options** (*Object* - A configuation object passed to the filter template builder. *See [Filter Templates](#filter-templates) for more information about individual filter template options*)<br/>**applyImmediately** (*Boolean* - Immediatelly applies the filter to the collection. Defaults to false if not specified)||
+|addPredefinedFilter|**name** (*String* - unique key value for collection filter list)<br/>**filterFunction** (*Function* - A function that takes in a model as a parameter and returns a boolean)<br/>**applyImmediately** (*Boolean/String* - Immediatelly applies the filter to the collection. Defaults to false if not specified. Pass in a string value of '!' to immediately apply the NOT filter. *See [Using NOT filters](#not-filter-info) for more information*)||
+|applyPredefinedFilter|**name** (*String/Object* - unique key value or Object list of values with filter name/boolean as the key/value pair)<br/>**value** (*Boolean* - If *true* enables filter. If *false* disables the filters. Defaults to toggling the current state of the filter if undefined)|*Note* if **name** is passed in as an object **value** is ignored and is substituted by the value in each entry in **name**)|
+|addPredefinedFilter|**name** (*String* - unique key value for collection filter list)||
 
 
 <details>
@@ -106,16 +116,156 @@ exampleThreeCollection.goToPage(5);
 ## <a name="filter-templates"></a>Filter Templates
 
 #### <a name="filter-templates-date-range"></a>Date Range Filter Template
-   documentation coming soon!
+   Add new Date Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', *data-range-filter-options* ); Below are the following options parameters.
+##### Configuarable Option Parameters
+| Option Name | Expected Input Type | Default Value | Notes |
+|     ---	    |	---    			  | --- | --- |
+|options.start.value|String| '1970/01/01 00:00:00'|A date string in moment format |
+|options.start.format|String| 'YYYY/MM/DD HH:mm:ss'|A String defining the format of *options.start.value* . |
+|options.start.isInUTC|Boolean| true|Flag to set whether or not the formated date string is in UTC time |
+|options.start.includeInRange|Boolean| true|if set to *true* comparedValue must be >= start date. If set to *false* comparedValue must be > start date. |
+|options.start.ignore|Boolean| false|Completely ignores the start date boundry. Use this option if you are trying to find values < or <= the end date. |
+|options.end.value|String| 'now'|A date string in moment format |
+|options.end.format|String| 'YYYY/MM/DD HH:mm:ss'|A String defining the format of *options.end.value* . |
+|options.end.isInUTC|Boolean| true|Flag to set whether or not the formated date string is in UTC time |
+|options.end.includeInRange|Boolean| true|if set to *true* comparedValue must be <= end date. If set to *false* comparedValue must be < end date. |
+|options.end.ignore|Boolean| false|Completely ignores the end date boundry. Use this option if you are trying to find values > or >= the start date. |
+|options.filterableModelAttributes|Array||Array of Objects containing the list of model attribute to include in the filter and the configuration for those modle attributes|
+|options.filterableModelAttributes[n].attribute|String| []|String containing model attribute name. Example *'someDate'* is equivalent to returning *model.get('someDate')*. Nested values are supported. If you need to retrieve a nested value pass the string as follows 'someData.date'. Equivalent to returning *model.get('someData').date*. You can keep adding to the nested value layers as such: 'someData.moreData.evenMoreDate. ... .finallyMyDateAttribute' equivalently calls *model.get('someData').moreData.evenMoreDate. ... .finallyMyDateAttribute* .|
+|options.filterableModelAttributes[n].format|String| 'YYYY/MM/DD HH:mm:ss'|A String defining the format of the model attribute value. |
+|options.filterableModelAttributes[n].isInUTC|Boolean| true|Flag to set whether or not the formated date string is in UTC time |
+
+
+<details>
+<summary>Code Examples
+</summary>
+``` javascript
+var examplePredefinedFilterCollection = new Backbone.PredefinedFiltersCollection([/* some list of models */]);
+// Base Default Options
+var options = {
+	start: {},
+	end: {},
+	filterableModelAttributes: []
+};
+
+// add basic model attribute to filter against
+options.filterableModelAttributes.push({
+	attribute: 'dateOfBirth'
+});
+
+// add nested model attribute to filter against
+options.filterableModelAttributes.push({
+	attribute: 'history.independanceDay.dateOfDeclarationOfIndependance'
+});
+
+// add model attribute to filter against that is in another foramt and is not in UTC
+options.filterableModelAttributes.push({
+	attribute: 'serverconfig.servertime',
+	format: 'YYYYMMDDHHmmss',
+	isInUTC: false
+});
+
+// set filter to only look for dates on or after a given date
+options.end.ignore = true;
+
+// set filter to only look for dates only after a given date
+options.end.ignore = true;
+options.start.includeInRange = false;
+
+// set filter to only look for dates on or before a given date
+options.start.ignore = true;
+
+// set filter to only look for dates only before a given date
+options.start.ignore = true;
+options.end.includeInRange = false;
+
+// set specific start date value
+options.start.value = '08-10-1982 10:53:41';
+options.start.format = 'MM-DD-YYYY HH:mm:ss';
+options.start.isInUTC = false;
+
+// set specific end date value
+options.end.value = '09/13/2010 11:04:23 AM';
+options.end.format = 'MM/DD/YYYY hh:mm:ss A';
+options.end.isInUTC = true;
+
+// Add Date Range Filter to Collection
+examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', options);
+
+// Add Date Range Filter to Collection and apply Immediately 
+examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', options, true);
+```
+</details>
+documentation coming soon!
+
+[Return to Top](#pagetop)
 
 #### <a name="filter-templates-or"></a>Or Filter Template
-   documentation for Or Filter Template still under construction
+   Add new Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-range-filter-name', 'Or', *or-filter-options* );
+Below are the following options parameters.
+##### Configuarable Option Parameters
+| Option Name | Expected Input Type | Default Value | Notes |
+|     ---	    |	---    			  | --- | --- |
+|options.filters|Array| []|Array of Strings listing out the filter names. Any model that is returned from the listed filters is included. |
+
+
+<details>
+<summary>Code Examples
+</summary>
+``` javascript
+
+```
+</details>
+documentation for Or Filter Template still under construction
+
+[Return to Top](#pagetop)
 
 #### <a name="filter-templates-range"></a>Range Filter Template
-   documentation for Range Filter Template still under construction
+   Add new Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-range-filter-name', 'RangeFilter', *range-filter-options* ); Below are the following options parameters.
+##### Configuarable Option Parameters
+| Option Name | Expected Input Type | Default Value | Notes |
+|     ---	    |	---    			  | --- | --- |
+|options.start.value|String| 0|A numeric value |
+|options.start.includeInRange|Boolean| true|if set to *true* comparedValue must be >= start value. If set to *false* comparedValue must be > start value. |
+|options.start.ignore|Boolean| false|Completely ignores the start value boundry. Use this option if you are trying to find values < or <= the end value. |
+|options.end.value|String| 100|A numeric value |
+|options.end.includeInRange|Boolean| true|if set to *true* comparedValue must be <= end value. If set to *false* comparedValue must be < end value. |
+|options.end.ignore|Boolean| false|Completely ignores the end value boundry. Use this option if you are trying to find values > or >= the start value. |
+|options.filterableModelAttributes|Array| []|Array of Strings containing the list of model attributes to include in the filter. Example *'someDate'* is equivalent to returning *model.get('someDate')*. Nested values are supported. If you need to retrieve a nested value pass the string as follows 'someData.value'. Equivalent to returning *model.get('someData').value*. You can keep adding to the nested value layers as such: 'someData.moreData.evenMoreData. ... .finallyMyAttribute' equivalently calls *model.get('someData').moreData.evenMoreData. ... .finallyMyAttribute* .|
+
+
+<details>
+<summary>Code Examples
+</summary>
+``` javascript
+
+```
+</details>
+documentation for Range Filter Template still under construction
+
+[Return to Top](#pagetop)
 
 #### <a name="filter-templates-text-search"></a>Text Search Filter Template
-   documentation for Text Search Filter Template still under construction
+   Add new Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-text-search-filter-name', 'TextSearch', *test-search-filter-options* ); Below are the following options parameters.
+##### Configuarable Option Parameters
+| Option Name | Expected Input Type | Default Value | Notes |
+|     ---	    |	---    			  | --- | --- |
+|options.inputValue|String/Number/Boolean| ''|String, Number, or Boolean value to search for. |
+|options.caseSensitive|Boolean| false|Flag to indicate to match results with exact case of *inputValue* or not. |
+|options.minimumInputLength|Number| 1|Minimum of charactors in *inputValue* necessary to invoke the filter. If the minimun length is not met the filter returns all models effectively not running the filter. Helpful for use with typeahead functionality. |
+|options.filterableModelAttributes|Array| []|Array of Strings containing the list of model attributes to include in the filter. Example *'someData'* is equivalent to returning *model.get('someData')*. Nested values are supported. If you need to retrieve a nested value pass the string as follows 'someData.value'. Equivalent to returning *model.get('someData').value*. You can keep adding to the nested value layers as such: 'someData.moreData.evenMoreData. ... .finallyMyAttribute' equivalently calls *model.get('someData').moreData.evenMoreData. ... .finallyMyAttribute* .|
+
+
+<details>
+<summary>Code Examples
+</summary>
+``` javascript
+
+```
+</details>
+documentation for Text Search Filter Template still under construction
+
+[Return to Top](#pagetop)
 
 
 ## <a name="contributing"></a>Contributing
@@ -128,9 +278,16 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * **1.0.0** Initial release
 
 ## <a name="build-history"></a>Travis CI Build History
+<details>
+<summary>Show Build History Table</summary>
 | Build Number : Result |
 | --- 					  |
+| [![Travis Build Number 43][build-history-badge-43-url]][travis-builds-url] |
 | [![Travis Build Number 42][build-history-badge-42-url]][travis-builds-url] |
+| [![Travis Build Number 41][build-history-badge-41-url]][travis-builds-url] |
+| [![Travis Build Number 40][build-history-badge-40-url]][travis-builds-url] |
+| [![Travis Build Number 39][build-history-badge-39-url]][travis-builds-url] |
+| [![Travis Build Number 38][build-history-badge-38-url]][travis-builds-url] |
 | [![Travis Build Number 37][build-history-badge-37-url]][travis-builds-url] |
 | [![Travis Build Number 36][build-history-badge-36-url]][travis-builds-url] |
 | [![Travis Build Number 35][build-history-badge-35-url]][travis-builds-url] |
@@ -169,10 +326,15 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 | [![Travis Build Number 2][build-history-badge-2-url]][travis-builds-url] |
 | [![Travis Build Number 1][build-history-badge-1-url]][travis-builds-url] |
 
-
+</details>
 [Return to Top](#pagetop)
 
+[build-history-badge-43-url]: https://img.shields.io/badge/TravisCI%201.0.0.43-Passed-brightgreen.svg?style=flat
 [build-history-badge-42-url]: https://img.shields.io/badge/TravisCI%201.0.0.42-Passed-brightgreen.svg?style=flat
+[build-history-badge-41-url]: https://img.shields.io/badge/TravisCI%201.0.0.41-Unknown-yellow.svg?style=flat
+[build-history-badge-40-url]: https://img.shields.io/badge/TravisCI%201.0.0.40-Unknown-yellow.svg?style=flat
+[build-history-badge-39-url]: https://img.shields.io/badge/TravisCI%201.0.0.39-Unknown-yellow.svg?style=flat
+[build-history-badge-38-url]: https://img.shields.io/badge/TravisCI%201.0.0.38-Unknown-yellow.svg?style=flat
 [build-history-badge-37-url]: https://img.shields.io/badge/TravisCI%201.0.0.37-Passed-brightgreen.svg?style=flat
 [build-history-badge-36-url]: https://img.shields.io/badge/TravisCI%201.0.0.36-Passed-brightgreen.svg?style=flat
 [build-history-badge-35-url]: https://img.shields.io/badge/TravisCI%201.0.0.35-Passed-brightgreen.svg?style=flat
@@ -231,11 +393,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [coverage-badge]: https://coveralls.io/repos/github/JSystemsTech/backbone-collection-predefined-filters/badge.svg?branch=master
 
 
-[coverage-lines-badge]: https://img.shields.io/badge/Lines-288%2F288%20100%25-brightgreen.svg?style=flat
-[coverage-statements-badge]: https://img.shields.io/badge/Statements-288%2F288%20100%25-brightgreen.svg?style=flat
-[coverage-branches-badge]: https://img.shields.io/badge/Branches-226%2F226%20100%25-brightgreen.svg?style=flat
-[coverage-functions-badge]: https://img.shields.io/badge/Functions-59%2F59%20100%25-brightgreen.svg?style=flat
-[tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2385-brightgreen.svg?style=flat
+[coverage-lines-badge]: https://img.shields.io/badge/Lines-314%2F314%20100%25-brightgreen.svg?style=flat
+[coverage-statements-badge]: https://img.shields.io/badge/Statements-314%2F314%20100%25-brightgreen.svg?style=flat
+[coverage-branches-badge]: https://img.shields.io/badge/Branches-242%2F242%20100%25-brightgreen.svg?style=flat
+[coverage-functions-badge]: https://img.shields.io/badge/Functions-63%2F63%20100%25-brightgreen.svg?style=flat
+[tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
-[tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2385-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-42-4B0082.svg?style=flat
+[tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-43-4B0082.svg?style=flat
