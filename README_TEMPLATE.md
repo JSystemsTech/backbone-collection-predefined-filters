@@ -2,6 +2,7 @@
 ---
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
 
+[![Release Status][release-status-badge]][npm-url]
 [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][dependancies-image]][dependancies-url] [![Coverage Status][coverage-badge]][coverage-url]
 ---
 
@@ -110,7 +111,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 </details>
 [Return to Top](#pagetop)
 
-
+[release-status-badge]: https://img.shields.io/badge/Release%20Status-Unreleased%20Development%20still%20in%20progress-red.svg?style=flat
 [main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE

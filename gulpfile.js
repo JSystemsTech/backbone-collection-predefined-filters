@@ -87,9 +87,15 @@ gulp.task('documentation', function() {
         .pipe(rename('./README_TEMPLATE.md'))
         .pipe(gulp.dest('./'));
 });
+gulp.task('setnpmversionnumber', function() {
+    return gulp.src(['./package.json'])
+        .pipe(gulpHelpers.getVersionNumber(util.env.buildnumber, true))
+        .pipe(buffer())
+        .pipe(gulp.dest('./'));
+});
 gulp.task('getversionnumber', function() {
     return gulp.src(['./package.json'])
-        .pipe(gulpHelpers.getVersionNumber(util.env.buildnumber))
+        .pipe(gulpHelpers.getVersionNumber(util.env.buildnumber, false))
         .pipe(buffer())
         .pipe(rename('version_number.txt'))
         .pipe(gulp.dest('./'));

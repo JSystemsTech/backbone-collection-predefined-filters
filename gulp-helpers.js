@@ -193,10 +193,14 @@ var setFilterTemplateDocs = function(tableOfContentsRows, filterTemplateRows) {
 	}
 	return eventStream.map(transform);
 };
-var getVersionNumber = function(buildNumber) {
+var getVersionNumber = function(buildNumber, settingPackageDotJson) {
 	var transform = function(file, callback) {
 		var data = JSON.parse(String(file.contents));
-		file.contents = new Buffer(data.version + '.' + buildNumber);
+		file.contents = new Buffer(data.baseVersion + '.' + buildNumber);
+		if(settingPackageDotJson){
+			data.version = data.baseVersion + '.' + buildNumber
+			file.contents = new Buffer(JSON.stringify(data));
+		}
 		callback(null, file);
 	}
 	return eventStream.map(transform);
