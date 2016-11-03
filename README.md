@@ -403,11 +403,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [coverage-badge]: https://coveralls.io/repos/github/JSystemsTech/backbone-collection-predefined-filters/badge.svg?branch=master
 
 
-[coverage-lines-badge]: https://img.shields.io/badge/Lines-314%2F314%20100%25-brightgreen.svg?style=flat
-[coverage-statements-badge]: https://img.shields.io/badge/Statements-314%2F314%20100%25-brightgreen.svg?style=flat
-[coverage-branches-badge]: https://img.shields.io/badge/Branches-242%2F242%20100%25-brightgreen.svg?style=flat
-[coverage-functions-badge]: https://img.shields.io/badge/Functions-63%2F63%20100%25-brightgreen.svg?style=flat
+[coverage-lines-badge]: https://img.shields.io/badge/Lines-288%2F288%20100%25-brightgreen.svg?style=flat
+[coverage-statements-badge]: https://img.shields.io/badge/Statements-288%2F288%20100%25-brightgreen.svg?style=flat
+[coverage-branches-badge]: https://img.shields.io/badge/Branches-226%2F226%20100%25-brightgreen.svg?style=flat
+[coverage-functions-badge]: https://img.shields.io/badge/Functions-59%2F59%20100%25-brightgreen.svg?style=flat
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-48-4B0082.svg?style=flat
