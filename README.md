@@ -280,108 +280,59 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 ## <a name="build-history"></a>Travis CI Build History
 <details>
 <summary>Show Build History Table</summary>
-| Build Number : Result |
-| --- 					  |
-| [![Travis Build Number 48][build-history-badge-48-url]][travis-builds-url] |
-| [![Travis Build Number 47][build-history-badge-47-url]][travis-builds-url] |
-| [![Travis Build Number 46][build-history-badge-46-url]][travis-builds-url] |
-| [![Travis Build Number 45][build-history-badge-45-url]][travis-builds-url] |
-| [![Travis Build Number 44][build-history-badge-44-url]][travis-builds-url] |
-| [![Travis Build Number 43][build-history-badge-43-url]][travis-builds-url] |
-| [![Travis Build Number 42][build-history-badge-42-url]][travis-builds-url] |
-| [![Travis Build Number 41][build-history-badge-41-url]][travis-builds-url] |
-| [![Travis Build Number 40][build-history-badge-40-url]][travis-builds-url] |
-| [![Travis Build Number 39][build-history-badge-39-url]][travis-builds-url] |
-| [![Travis Build Number 38][build-history-badge-38-url]][travis-builds-url] |
-| [![Travis Build Number 37][build-history-badge-37-url]][travis-builds-url] |
-| [![Travis Build Number 36][build-history-badge-36-url]][travis-builds-url] |
-| [![Travis Build Number 35][build-history-badge-35-url]][travis-builds-url] |
-| [![Travis Build Number 34][build-history-badge-34-url]][travis-builds-url] |
-| [![Travis Build Number 33][build-history-badge-33-url]][travis-builds-url] |
-| [![Travis Build Number 32][build-history-badge-32-url]][travis-builds-url] |
-| [![Travis Build Number 31][build-history-badge-31-url]][travis-builds-url] |
-| [![Travis Build Number 30][build-history-badge-30-url]][travis-builds-url] |
-| [![Travis Build Number 29][build-history-badge-29-url]][travis-builds-url] |
-| [![Travis Build Number 28][build-history-badge-28-url]][travis-builds-url] |
-| [![Travis Build Number 27][build-history-badge-27-url]][travis-builds-url] |
-| [![Travis Build Number 26][build-history-badge-26-url]][travis-builds-url] |
-| [![Travis Build Number 25][build-history-badge-25-url]][travis-builds-url] |
-| [![Travis Build Number 24][build-history-badge-24-url]][travis-builds-url] |
-| [![Travis Build Number 23][build-history-badge-23-url]][travis-builds-url] |
-| [![Travis Build Number 22][build-history-badge-22-url]][travis-builds-url] |
-| [![Travis Build Number 21][build-history-badge-21-url]][travis-builds-url] |
-| [![Travis Build Number 20][build-history-badge-20-url]][travis-builds-url] |
-| [![Travis Build Number 19][build-history-badge-19-url]][travis-builds-url] |
-| [![Travis Build Number 18][build-history-badge-18-url]][travis-builds-url] |
-| [![Travis Build Number 17][build-history-badge-17-url]][travis-builds-url] |
-| [![Travis Build Number 16][build-history-badge-16-url]][travis-builds-url] |
-| [![Travis Build Number 15][build-history-badge-15-url]][travis-builds-url] |
-| [![Travis Build Number 14][build-history-badge-14-url]][travis-builds-url] |
-| [![Travis Build Number 13][build-history-badge-13-url]][travis-builds-url] |
-| [![Travis Build Number 12][build-history-badge-12-url]][travis-builds-url] |
-| [![Travis Build Number 11][build-history-badge-11-url]][travis-builds-url] |
-| [![Travis Build Number 10][build-history-badge-10-url]][travis-builds-url] |
-| [![Travis Build Number 9][build-history-badge-9-url]][travis-builds-url] |
-| [![Travis Build Number 8][build-history-badge-8-url]][travis-builds-url] |
-| [![Travis Build Number 7][build-history-badge-7-url]][travis-builds-url] |
-| [![Travis Build Number 6][build-history-badge-6-url]][travis-builds-url] |
-| [![Travis Build Number 5][build-history-badge-5-url]][travis-builds-url] |
-| [![Travis Build Number 4][build-history-badge-4-url]][travis-builds-url] |
-| [![Travis Build Number 3][build-history-badge-3-url]][travis-builds-url] |
-| [![Travis Build Number 2][build-history-badge-2-url]][travis-builds-url] |
-| [![Travis Build Number 1][build-history-badge-1-url]][travis-builds-url] |
+<table><tr><th>Build Number</th><th>Result</th></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.48-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.47-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.46-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.45-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.44-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.43-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.42-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.41-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.40-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.39-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.38-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.37-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.36-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.35-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.34-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.33-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.32-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.31-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.30-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.29-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.28-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.27-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.26-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.25-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.24-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.23-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.22-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.21-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.20-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.19-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.18-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.17-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.16-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.15-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.14-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.13-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.12-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.11-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.10-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.9-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.8-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.7-Failed-red.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.6-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.5-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.4-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.3-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.2-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.1-Failed-red.svg?style=flat"/></a></td></tr>
+</table>
 
 </details>
 [Return to Top](#pagetop)
-
-[build-history-badge-48-url]: https://img.shields.io/badge/TravisCI%201.0.0.48-Passed-brightgreen.svg?style=flat
-[build-history-badge-47-url]: https://img.shields.io/badge/TravisCI%201.0.0.47-Cancelled-lightgrey.svg?style=flat
-[build-history-badge-46-url]: https://img.shields.io/badge/TravisCI%201.0.0.46-Cancelled-lightgrey.svg?style=flat
-[build-history-badge-45-url]: https://img.shields.io/badge/TravisCI%201.0.0.45-Cancelled-lightgrey.svg?style=flat
-[build-history-badge-44-url]: https://img.shields.io/badge/TravisCI%201.0.0.44-Passed-brightgreen.svg?style=flat
-[build-history-badge-43-url]: https://img.shields.io/badge/TravisCI%201.0.0.43-Passed-brightgreen.svg?style=flat
-[build-history-badge-42-url]: https://img.shields.io/badge/TravisCI%201.0.0.42-Passed-brightgreen.svg?style=flat
-[build-history-badge-41-url]: https://img.shields.io/badge/TravisCI%201.0.0.41-Unknown-yellow.svg?style=flat
-[build-history-badge-40-url]: https://img.shields.io/badge/TravisCI%201.0.0.40-Unknown-yellow.svg?style=flat
-[build-history-badge-39-url]: https://img.shields.io/badge/TravisCI%201.0.0.39-Unknown-yellow.svg?style=flat
-[build-history-badge-38-url]: https://img.shields.io/badge/TravisCI%201.0.0.38-Unknown-yellow.svg?style=flat
-[build-history-badge-37-url]: https://img.shields.io/badge/TravisCI%201.0.0.37-Passed-brightgreen.svg?style=flat
-[build-history-badge-36-url]: https://img.shields.io/badge/TravisCI%201.0.0.36-Passed-brightgreen.svg?style=flat
-[build-history-badge-35-url]: https://img.shields.io/badge/TravisCI%201.0.0.35-Passed-brightgreen.svg?style=flat
-[build-history-badge-34-url]: https://img.shields.io/badge/TravisCI%201.0.0.34-Passed-brightgreen.svg?style=flat
-[build-history-badge-33-url]: https://img.shields.io/badge/TravisCI%201.0.0.33-Passed-brightgreen.svg?style=flat
-[build-history-badge-32-url]: https://img.shields.io/badge/TravisCI%201.0.0.32-Passed-brightgreen.svg?style=flat
-[build-history-badge-31-url]: https://img.shields.io/badge/TravisCI%201.0.0.31-Passed-brightgreen.svg?style=flat
-[build-history-badge-30-url]: https://img.shields.io/badge/TravisCI%201.0.0.30-Passed-brightgreen.svg?style=flat
-[build-history-badge-29-url]: https://img.shields.io/badge/TravisCI%201.0.0.29-Passed-brightgreen.svg?style=flat
-[build-history-badge-28-url]: https://img.shields.io/badge/TravisCI%201.0.0.28-Passed-brightgreen.svg?style=flat
-[build-history-badge-27-url]: https://img.shields.io/badge/TravisCI%201.0.0.27-Passed-brightgreen.svg?style=flat
-[build-history-badge-26-url]: https://img.shields.io/badge/TravisCI%201.0.0.26-Passed-brightgreen.svg?style=flat
-[build-history-badge-25-url]: https://img.shields.io/badge/TravisCI%201.0.0.25-Passed-brightgreen.svg?style=flat
-[build-history-badge-24-url]: https://img.shields.io/badge/TravisCI%201.0.0.24-Passed-brightgreen.svg?style=flat
-[build-history-badge-23-url]: https://img.shields.io/badge/TravisCI%201.0.0.23-Passed-brightgreen.svg?style=flat
-[build-history-badge-22-url]: https://img.shields.io/badge/TravisCI%201.0.0.22-Passed-brightgreen.svg?style=flat
-[build-history-badge-21-url]: https://img.shields.io/badge/TravisCI%201.0.0.21-Passed-brightgreen.svg?style=flat
-[build-history-badge-20-url]: https://img.shields.io/badge/TravisCI%201.0.0.20-Passed-brightgreen.svg?style=flat
-[build-history-badge-19-url]: https://img.shields.io/badge/TravisCI%201.0.0.19-Passed-brightgreen.svg?style=flat
-[build-history-badge-18-url]: https://img.shields.io/badge/TravisCI%201.0.0.18-Passed-brightgreen.svg?style=flat
-[build-history-badge-17-url]: https://img.shields.io/badge/TravisCI%201.0.0.17-Passed-brightgreen.svg?style=flat
-[build-history-badge-16-url]: https://img.shields.io/badge/TravisCI%201.0.0.16-Passed-brightgreen.svg?style=flat
-[build-history-badge-15-url]: https://img.shields.io/badge/TravisCI%201.0.0.15-Passed-brightgreen.svg?style=flat
-[build-history-badge-14-url]: https://img.shields.io/badge/TravisCI%201.0.0.14-Passed-brightgreen.svg?style=flat
-[build-history-badge-13-url]: https://img.shields.io/badge/TravisCI%201.0.0.13-Passed-brightgreen.svg?style=flat
-[build-history-badge-12-url]: https://img.shields.io/badge/TravisCI%201.0.0.12-Passed-brightgreen.svg?style=flat
-[build-history-badge-11-url]: https://img.shields.io/badge/TravisCI%201.0.0.11-Passed-brightgreen.svg?style=flat
-[build-history-badge-10-url]: https://img.shields.io/badge/TravisCI%201.0.0.10-Passed-brightgreen.svg?style=flat
-[build-history-badge-9-url]: https://img.shields.io/badge/TravisCI%201.0.0.9-Passed-brightgreen.svg?style=flat
-[build-history-badge-8-url]: https://img.shields.io/badge/TravisCI%201.0.0.8-Passed-brightgreen.svg?style=flat
-[build-history-badge-7-url]: https://img.shields.io/badge/TravisCI%201.0.0.7-Failed-red.svg?style=flat
-[build-history-badge-6-url]: https://img.shields.io/badge/TravisCI%201.0.0.6-Passed-brightgreen.svg?style=flat
-[build-history-badge-5-url]: https://img.shields.io/badge/TravisCI%201.0.0.5-Passed-brightgreen.svg?style=flat
-[build-history-badge-4-url]: https://img.shields.io/badge/TravisCI%201.0.0.4-Passed-brightgreen.svg?style=flat
-[build-history-badge-3-url]: https://img.shields.io/badge/TravisCI%201.0.0.3-Passed-brightgreen.svg?style=flat
-[build-history-badge-2-url]: https://img.shields.io/badge/TravisCI%201.0.0.2-Passed-brightgreen.svg?style=flat
-[build-history-badge-1-url]: https://img.shields.io/badge/TravisCI%201.0.0.1-Failed-red.svg?style=flat
 
 
 [main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"
@@ -409,5 +360,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [coverage-functions-badge]: https://img.shields.io/badge/Functions-59%2F59%20100%25-brightgreen.svg?style=flat
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-48-4B0082.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat

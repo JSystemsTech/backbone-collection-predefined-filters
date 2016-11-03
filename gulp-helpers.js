@@ -203,19 +203,16 @@ var getVersionNumber = function(buildNumber) {
 };
 var setBuildHistory = function(tableOfContentsRows, filterTemplateRows) {
 	var buildHistory = require('./build_history');
-	var buildHistoryTable = '| Build Number \: Result |\n' +
-		'| --- 					  |\n';
+	var buildHistoryTable = '<table><tr><th>Build Number</th><th>Result</th></tr>\n';
 	var sortedBuilds = Object.keys(buildHistory).sort(function(a, b) {
 		return parseInt(b) - parseInt(a);
 	});
-	var buildBadgeUrlKeyURLs = [];
 	_.each(sortedBuilds, function(build) {
-		var buildBadgeUrlKeyURL = '[build-history-badge-' + build + '-url]';
-		buildBadgeUrlKeyURLs.push(buildBadgeUrlKeyURL + ': ' + buildHistory[build].badgeUrl);
-		buildHistoryTable = buildHistoryTable + '| [![Travis Build Number ' + build + ']' + buildBadgeUrlKeyURL + '][travis-builds-url] |\n';
+		var travisURL = 'https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds';
+		buildHistoryTable = buildHistoryTable + '<tr><td colspan="2"><a href="' + travisURL + '"><img src="' + buildHistory[build].badgeUrl + '"/></a></td></tr>\n';
 	});
 	var transform = function(file, callback) {
-		var data = String(file.contents).replace('{{>build-history-content}}', buildHistoryTable).replace('{{>build-history-content-badge-urls}}', buildBadgeUrlKeyURLs.join('\n'));
+		var data = String(file.contents).replace('{{>build-history-content}}', buildHistoryTable + '</table>\n');
 		file.contents = new Buffer(data);
 		callback(null, file);
 	};

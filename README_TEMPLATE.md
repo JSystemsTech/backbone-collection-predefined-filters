@@ -110,8 +110,6 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 </details>
 [Return to Top](#pagetop)
 
-{{>build-history-content-badge-urls}}
-
 
 [main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
