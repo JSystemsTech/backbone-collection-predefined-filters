@@ -129,7 +129,7 @@
 		"badgeUrl": "https://img.shields.io/badge/TravisCI 1.0.43-Passed-brightgreen.svg?style=flat"
 	},
 	"44": {
-		"badgeUrl": "https://img.shields.io/badge/TravisCI 1.0.0.44-Passed-brightgreen.svg?style=flat"
+		"badgeUrl": "https://img.shields.io/badge/TravisCI 1.0.44-Passed-brightgreen.svg?style=flat"
 	},
 	"45": {
 		"badgeUrl": "https://img.shields.io/badge/TravisCI 1.0.45-Cancelled-lightgrey.svg?style=flat"
@@ -145,5 +145,8 @@
 	},
 	"49": {
 		"badgeUrl": "https://img.shields.io/badge/TravisCI 1.0.49-Failed-red.svg?style=flat"
+	},
+	"50": {
+		"badgeUrl": "https://img.shields.io/badge/TravisCI 1.0.50-Failed-red.svg?style=flat"
 	}
 }

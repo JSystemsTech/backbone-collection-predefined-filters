@@ -282,12 +282,13 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 <details>
 <summary>Show Build History Table</summary>
 <table><tr><th>Build Number</th><th>Result</th></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.50-Failed-red.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.49-Failed-red.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.48-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.47-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.46-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.45-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.0.44-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.44-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.43-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.42-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.41-Unknown-yellow.svg?style=flat"/></a></td></tr>
