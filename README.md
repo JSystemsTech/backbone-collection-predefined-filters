@@ -2,6 +2,7 @@
 ---
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
 
+[![Release Status][release-status-badge]][npm-url]
 [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][dependancies-image]][dependancies-url] [![Coverage Status][coverage-badge]][coverage-url]
 ---
 
@@ -281,60 +282,61 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 <details>
 <summary>Show Build History Table</summary>
 <table><tr><th>Build Number</th><th>Result</th></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.48-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.47-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.46-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.45-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.44-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.43-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.42-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.41-Unknown-yellow.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.40-Unknown-yellow.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.39-Unknown-yellow.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.38-Unknown-yellow.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.37-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.36-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.35-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.34-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.33-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.32-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.31-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.30-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.29-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.28-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.27-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.26-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.25-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.24-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.23-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.22-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.21-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.20-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.19-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.18-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.17-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.16-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.15-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.14-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.13-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.12-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.11-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.10-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.9-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.8-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.7-Failed-red.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.6-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.5-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.4-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.3-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.2-Passed-brightgreen.svg?style=flat"/></a></td></tr>
-<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.0.1-Failed-red.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.49-Failed-red.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.48-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.47-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.46-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.45-Cancelled-lightgrey.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.0.44-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.43-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.42-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.41-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.40-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.39-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.38-Unknown-yellow.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.37-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.36-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.35-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.34-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.33-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.32-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.31-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.30-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.29-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.28-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.27-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.26-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.25-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.24-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.23-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.22-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.21-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.20-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.19-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.18-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.17-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.16-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.15-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.14-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.13-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.12-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.11-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.10-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.9-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.8-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.7-Failed-red.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.6-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.5-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.4-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.3-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.2-Passed-brightgreen.svg?style=flat"/></a></td></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.1-Failed-red.svg?style=flat"/></a></td></tr>
 </table>
 
 </details>
 [Return to Top](#pagetop)
 
-
+[release-status-badge]: https://img.shields.io/badge/Release%20Status-Unreleased%20Development%20still%20in%20progress-red.svg?style=flat
 [main-logo]: logo-main.png?raw=true "Backbone Collection Predefined Filters"
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
