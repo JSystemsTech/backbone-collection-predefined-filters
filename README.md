@@ -53,8 +53,8 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 |addPredefinedFilter|**name** (*String* - unique key value for collection filter list)||
 
 
-<details>
-<summary>Code Examples</summary>
+##### Code Examples
+
 ``` javascript
 var predefinedFilterCollection = require('backbone-collection-predefined-filters');
 var models = [/*SomeArrayOfBackboneModels*/];
@@ -107,7 +107,6 @@ exampleThreeCollection.previousPage();
 exampleThreeCollection.goToPage(5);
 ```
 
-</details>
 
 ## <a name="tests"></a>Tests
 | Coverage Test Results 											| Unit Test Run											   |
@@ -141,9 +140,8 @@ exampleThreeCollection.goToPage(5);
 |options.filterableModelAttributes[n].isInUTC|Boolean| true|Flag to set whether or not the formated date string is in UTC time |
 
 
-<details>
-<summary>Code Examples
-</summary>
+##### Code Examples
+
 ``` javascript
 var examplePredefinedFilterCollection = new Backbone.PredefinedFiltersCollection([/* some list of models */]);
 // Base Default Options
@@ -201,7 +199,7 @@ examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-
 examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', options, true);
 ```
 
-</details>
+
 documentation coming soon!
 
 [Return to Top](#pagetop)
@@ -215,14 +213,13 @@ Below are the following options parameters.
 |options.filters|Array| []|Array of Strings listing out the filter names. Any model that is returned from the listed filters is included. |
 
 
-<details>
-<summary>Code Examples
-</summary>
+##### Code Examples
+
 ``` javascript
 
 ```
 
-</details>
+
 documentation for Or Filter Template still under construction
 
 [Return to Top](#pagetop)
@@ -241,14 +238,13 @@ documentation for Or Filter Template still under construction
 |options.filterableModelAttributes|Array| []|Array of Strings containing the list of model attributes to include in the filter. Example *'someDate'* is equivalent to returning *model.get('someDate')*. Nested values are supported. If you need to retrieve a nested value pass the string as follows 'someData.value'. Equivalent to returning *model.get('someData').value*. You can keep adding to the nested value layers as such: 'someData.moreData.evenMoreData. ... .finallyMyAttribute' equivalently calls *model.get('someData').moreData.evenMoreData. ... .finallyMyAttribute* .|
 
 
-<details>
-<summary>Code Examples
-</summary>
+##### Code Examples
+
 ``` javascript
 
 ```
 
-</details>
+
 documentation for Range Filter Template still under construction
 
 [Return to Top](#pagetop)
@@ -264,14 +260,13 @@ documentation for Range Filter Template still under construction
 |options.filterableModelAttributes|Array| []|Array of Strings containing the list of model attributes to include in the filter. Example *'someData'* is equivalent to returning *model.get('someData')*. Nested values are supported. If you need to retrieve a nested value pass the string as follows 'someData.value'. Equivalent to returning *model.get('someData').value*. You can keep adding to the nested value layers as such: 'someData.moreData.evenMoreData. ... .finallyMyAttribute' equivalently calls *model.get('someData').moreData.evenMoreData. ... .finallyMyAttribute* .|
 
 
-<details>
-<summary>Code Examples
-</summary>
+##### Code Examples
+
 ``` javascript
 
 ```
 
-</details>
+
 documentation for Text Search Filter Template still under construction
 
 [Return to Top](#pagetop)
@@ -290,6 +285,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 <details>
 <summary>Show Build History Table</summary>
 <table><tr><th>Build Number</th><th>Result</th></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.54-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.53-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.52-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.51-Passed-brightgreen.svg?style=flat"/></a></td></tr>
@@ -375,4 +371,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-53-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-54-4B0082.svg?style=flat
