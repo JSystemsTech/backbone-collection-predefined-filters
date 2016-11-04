@@ -20,8 +20,8 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 7. [Travis CI Build History](#build-history)
 
 ## <a name="installation"></a>Installation
-| Installation Type | Command|
-|     :---:      	|	---  |
+| Installation Type | Command                                                   |
+|:-----------------:|-----------------------------------------------------------|
 | npm 	            | npm install Backbone-Collection-Predefined-Filters --save |
 | bower             | bower install Backbone-Collection-Predefined-Filters 	 	|
 
@@ -87,7 +87,7 @@ exampleThreeCollection.goToPage(5);
 
 ## <a name="tests"></a>Tests
 | Coverage Test Results 											| Unit Test Run											   |
-|     ---      														|		---    										   	   |
+|-------------------------------------------------------------------|----------------------------------------------------------|
 | [![Lines Covered][coverage-lines-badge]][coverage-url]     		| [![Travis Build Number][travis-build-badge]][travis-url] |
 | [![Statements Covered][coverage-statements-badge]][coverage-url]  | [![Number of Tests][tests-total-badge]][travis-url]	   |
 | [![Functions Covered][coverage-functions-badge]][coverage-url]    | [![Tests Passed][tests-passed-badge]][travis-url]		   |
@@ -108,10 +108,9 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * **1.0.0** Initial release
 
 ## <a name="build-history"></a>Travis CI Build History
-<details>
-<summary>Show Build History Table</summary>
+
 {{>build-history-content}}
-</details>
+
 [Return to Top](#pagetop)
 
 [release-status-badge]: https://img.shields.io/badge/Release%20Status-Unreleased%20Development%20still%20in%20progress-red.svg?style=flat
