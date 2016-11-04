@@ -83,6 +83,7 @@ exampleThreeCollection.previousPage();
 /*Get Page 5 of Models*/
 exampleThreeCollection.goToPage(5);
 ```
+
 </details>
 
 ## <a name="tests"></a>Tests
