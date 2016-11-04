@@ -26,7 +26,7 @@ var buildMDTableRowFromCommentSection = function(commentSection) {
 };
 var buildOptionsTable = function(commentSection) {
 	var tableHeader = '| Option Name | Expected Input Type | Default Value | Notes |\n' +
-		'|     ---	    |	---    			  | --- | --- |\n';
+		'|-------------|----------|----------|----------|\n';
 	var rows = [];
 	_.each(commentSection.tags, function(tag) {
 		var defaultValue = '';
@@ -74,7 +74,7 @@ var addFilterOptionsTable = function(toTitleCase) {
 var buildMDTablefromJSDoc = function(mainSource) {
 	var tableHeader = '#### Available Collection Functions\n' +
 		'| Function Name | Expected Parameters | Notes |\n' +
-		'|     ---	    |	---    			  | --- |\n';
+		'|----------|----------|----------|\n';
 	var transform = function(file, callback) {
 		getFile(mainSource, function(data) {
 			var output = String(file.contents);
