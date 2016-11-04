@@ -34,7 +34,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 ##### Configuarable Option Parameters
 | Option Name | Expected Input Type | Default Value | Notes |
-|-------------|----------|----------|----------|
+|-------------|----------|----------|:---------|
 |options.predefinedFilters|Object| []|An object list of user defined functions with unique filter names as keys |
 |options.appliedPredefinedFilters|Object| []|An object list of user defined booleans with unique filter names as keys which set the state of the currently applied filters |
 |options.pagingOptions.modelsPerPage|Number| *The number of models in the collection (i.e. Show entire collection on 1 page)*|The maximum number of models each page has |
@@ -43,7 +43,7 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 
 #### Available Collection Functions
 | Function Name | Expected Parameters | Notes |
-|----------|----------|----------|
+|----------|----------|:---------|
 |nextPage||Sets Models to the next available Page. If options.pagingOptions.enableLooping is set to false then if the previous page number is < 1 the first page is returned.|
 |previousPage||Sets Models to the next available Page. If options.pagingOptions.enableLooping is set to false then if the next available page number is > the total number of pages the last page is returned.|
 |goToPage|**pageNumber** (*Number* - Number of Page to navigate to.)|Sets the current models to the specified page. If the input page number is > the total number of pages the last page is returned. If the input page number < 1 the first page is returned.|
@@ -123,7 +123,7 @@ exampleThreeCollection.goToPage(5);
    Add new Date Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', *data-range-filter-options* ); Below are the following options parameters.
 ##### Configuarable Option Parameters
 | Option Name | Expected Input Type | Default Value | Notes |
-|-------------|----------|----------|----------|
+|-------------|----------|----------|:---------|
 |options.start.value|String| '1970/01/01 00:00:00'|A date string in moment format |
 |options.start.format|String| 'YYYY/MM/DD HH:mm:ss'|A String defining the format of *options.start.value* . |
 |options.start.isInUTC|Boolean| true|Flag to set whether or not the formated date string is in UTC time |
@@ -209,7 +209,7 @@ documentation coming soon!
 Below are the following options parameters.
 ##### Configuarable Option Parameters
 | Option Name | Expected Input Type | Default Value | Notes |
-|-------------|----------|----------|----------|
+|-------------|----------|----------|:---------|
 |options.filters|Array| []|Array of Strings listing out the filter names. Any model that is returned from the listed filters is included. |
 
 
@@ -228,7 +228,7 @@ documentation for Or Filter Template still under construction
    Add new Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-range-filter-name', 'RangeFilter', *range-filter-options* ); Below are the following options parameters.
 ##### Configuarable Option Parameters
 | Option Name | Expected Input Type | Default Value | Notes |
-|-------------|----------|----------|----------|
+|-------------|----------|----------|:---------|
 |options.start.value|String| 0|A numeric value |
 |options.start.includeInRange|Boolean| true|if set to *true* comparedValue must be >= start value. If set to *false* comparedValue must be > start value. |
 |options.start.ignore|Boolean| false|Completely ignores the start value boundry. Use this option if you are trying to find values < or <= the end value. |
@@ -253,7 +253,7 @@ documentation for Range Filter Template still under construction
    Add new Range Filter by calling examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-text-search-filter-name', 'TextSearch', *test-search-filter-options* ); Below are the following options parameters.
 ##### Configuarable Option Parameters
 | Option Name | Expected Input Type | Default Value | Notes |
-|-------------|----------|----------|----------|
+|-------------|----------|----------|:---------|
 |options.inputValue|String/Number/Boolean| ''|String, Number, or Boolean value to search for. |
 |options.caseSensitive|Boolean| false|Flag to indicate to match results with exact case of *inputValue* or not. |
 |options.minimumInputLength|Number| 1|Minimum of charactors in *inputValue* necessary to invoke the filter. If the minimun length is not met the filter returns all models effectively not running the filter. Helpful for use with typeahead functionality. |
@@ -284,6 +284,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 ## <a name="build-history"></a>Travis CI Build History
 
 <table><tr><th>Build Number</th><th>Result</th></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.57-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.56-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.55-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.54-Passed-brightgreen.svg?style=flat"/></a></td></tr>
@@ -372,4 +373,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-56-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-57-4B0082.svg?style=flat
