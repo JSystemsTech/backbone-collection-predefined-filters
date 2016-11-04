@@ -106,6 +106,7 @@ exampleThreeCollection.previousPage();
 /*Get Page 5 of Models*/
 exampleThreeCollection.goToPage(5);
 ```
+
 </details>
 
 ## <a name="tests"></a>Tests
@@ -199,6 +200,7 @@ examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-
 // Add Date Range Filter to Collection and apply Immediately 
 examplePredefinedFilterCollection.addPredefinedFilterFromTemplate('example-date-range-filter-name', 'DateRangeFilter', options, true);
 ```
+
 </details>
 documentation coming soon!
 
@@ -219,6 +221,7 @@ Below are the following options parameters.
 ``` javascript
 
 ```
+
 </details>
 documentation for Or Filter Template still under construction
 
@@ -244,6 +247,7 @@ documentation for Or Filter Template still under construction
 ``` javascript
 
 ```
+
 </details>
 documentation for Range Filter Template still under construction
 
@@ -266,6 +270,7 @@ documentation for Range Filter Template still under construction
 ``` javascript
 
 ```
+
 </details>
 documentation for Text Search Filter Template still under construction
 
@@ -285,6 +290,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 <details>
 <summary>Show Build History Table</summary>
 <table><tr><th>Build Number</th><th>Result</th></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.53-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.52-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.51-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.50-Failed-red.svg?style=flat"/></a></td></tr>
@@ -369,4 +375,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-52-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-53-4B0082.svg?style=flat
