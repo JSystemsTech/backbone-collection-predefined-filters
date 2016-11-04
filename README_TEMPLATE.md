@@ -1,9 +1,12 @@
-![Backbone Collection Predefined Filters Logo][main-logo]
+<p align="center">
+  <img src="https://raw.github.com/JSystemsTech/backbone-collection-predefined-filters/master/logo-main.png" alt="Backbone Collection Predefined Filters Logo"/>
+</p>
+
 ---
 An extention of Backbone Collection that allows for predefined filter(s) to be added/removed/applied/unapplied on the collection
 
-[![Release Status][release-status-badge]][npm-url]
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][dependancies-image]][dependancies-url] [![Coverage Status][coverage-badge]][coverage-url]
+[![Release Status](https://img.shields.io/badge/Release%20Status-Unreleased%20Development%20still%20in%20progress-red.svg?style=flat)](https://www.npmjs.com/package/Backbone-Collection-Predefined-Filters)
+[![NPM version](http://img.shields.io/npm/v/Backbone-Collection-Predefined-Filters.svg?style=flat)](https://www.npmjs.com/package/Backbone-Collection-Predefined-Filters) [![NPM downloads](http://img.shields.io/npm/dm/Backbone-Collection-Predefined-Filters.svg?style=flat)](https://www.npmjs.com/package/Backbone-Collection-Predefined-Filters) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)][license-url] [![Build Status](https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters.svg?branch=master)](https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters?branch=master) [![Dependency Status](https://david-dm.org/JSystemsTech/backbone-collection-predefined-filters.svg?style=flat)](https://david-dm.org/JSystemsTech/backbone-collection-predefined-filters) [![Coverage Status](https://coveralls.io/repos/github/JSystemsTech/backbone-collection-predefined-filters/badge.svg?branch=master)](https://coveralls.io/repos/github/JSystemsTech/backbone-collection-predefined-filters?branch=master)
 ---
 
 ## <a name="pagetop"></a>Table of Contents
