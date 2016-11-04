@@ -23,8 +23,8 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 7. [Travis CI Build History](#build-history)
 
 ## <a name="installation"></a>Installation
-| Installation Type | Command|
-|     :---:      	|	---  |
+| Installation Type | Command                                                   |
+|:-----------------:|-----------------------------------------------------------|
 | npm 	            | npm install Backbone-Collection-Predefined-Filters --save |
 | bower             | bower install Backbone-Collection-Predefined-Filters 	 	|
 
@@ -110,7 +110,7 @@ exampleThreeCollection.goToPage(5);
 
 ## <a name="tests"></a>Tests
 | Coverage Test Results 											| Unit Test Run											   |
-|     ---      														|		---    										   	   |
+|-------------------------------------------------------------------|----------------------------------------------------------|
 | [![Lines Covered][coverage-lines-badge]][coverage-url]     		| [![Travis Build Number][travis-build-badge]][travis-url] |
 | [![Statements Covered][coverage-statements-badge]][coverage-url]  | [![Number of Tests][tests-total-badge]][travis-url]	   |
 | [![Functions Covered][coverage-functions-badge]][coverage-url]    | [![Tests Passed][tests-passed-badge]][travis-url]		   |
@@ -282,9 +282,9 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * **1.0.0** Initial release
 
 ## <a name="build-history"></a>Travis CI Build History
-<details>
-<summary>Show Build History Table</summary>
+
 <table><tr><th>Build Number</th><th>Result</th></tr>
+<tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.55-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.54-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.53-Passed-brightgreen.svg?style=flat"/></a></td></tr>
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI%201.0.52-Passed-brightgreen.svg?style=flat"/></a></td></tr>
@@ -341,7 +341,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 <tr><td colspan="2"><a href="https://travis-ci.org/JSystemsTech/backbone-collection-predefined-filters/builds"><img src="https://img.shields.io/badge/TravisCI 1.0.1-Failed-red.svg?style=flat"/></a></td></tr>
 </table>
 
-</details>
+
 [Return to Top](#pagetop)
 
 [release-status-badge]: https://img.shields.io/badge/Release%20Status-Unreleased%20Development%20still%20in%20progress-red.svg?style=flat
@@ -371,4 +371,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 [tests-passed-badge]: https://img.shields.io/badge/Tests%20Passed-2493-brightgreen.svg?style=flat
 [tests-failed-badge]: https://img.shields.io/badge/Tests%20Failed-0-brightgreen.svg?style=flat
 [tests-total-badge]: https://img.shields.io/badge/Number%20of%20Tests-2493-blue.svg?style=flat
-[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-54-4B0082.svg?style=flat
+[travis-build-badge]: https://img.shields.io/badge/Travis%20Build%20%23-55-4B0082.svg?style=flat
