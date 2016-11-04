@@ -10,6 +10,8 @@ then
   git add build_history.json
   git add README.md
   git add package.json
+  git add ./dist/backbone-collection-predefined-filters.min.js
+  git add ./dist/backbone-collection-predefined-filters.js
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed README.md & build_history.json update to master [ci skip]"
   git checkout master
   git merge HEAD@{1}

@@ -10,6 +10,7 @@ script:
 - gulp getversionnumber --buildnumber "$TRAVIS_BUILD_NUMBER"
 - gulp updatebuildhistory --buildnumber "$TRAVIS_BUILD_NUMBER"
 - npm run document
+- gulp browserify
 after_script: cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
 after_success:
 - travis/push.sh
