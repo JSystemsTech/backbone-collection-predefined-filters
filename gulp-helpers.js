@@ -62,7 +62,7 @@ var addFilterOptionsTable = function(toTitleCase) {
 			var examplesInputPath = './src/filter_templates/' + filterName + '/examples-doc.js';
 			getFile(examplesInputPath, function(examples) {
 
-				var codeExamples = '<details>\n<summary>Code Examples\n</summary>\n``` javascript\n' + examples + '\n```\n\n</details>'
+				var codeExamples = '##### Code Examples\n\n``` javascript\n' + examples + '\n```\n\n'
 				contents = constructorText.trim() + '\n' + optionsTable + '\n' + codeExamples + '\n' + contents + '\n\n[Return to Top](#pagetop)';
 				file.contents = new Buffer(contents);
 				callback(null, file);

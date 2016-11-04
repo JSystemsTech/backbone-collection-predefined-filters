@@ -30,8 +30,8 @@ An extention of Backbone Collection that allows for predefined filter(s) to be a
 {{>available-collection-functions}}
 
 
-<details>
-<summary>Code Examples</summary>
+##### Code Examples
+
 ``` javascript
 var predefinedFilterCollection = require('backbone-collection-predefined-filters');
 var models = [/*SomeArrayOfBackboneModels*/];
@@ -84,7 +84,6 @@ exampleThreeCollection.previousPage();
 exampleThreeCollection.goToPage(5);
 ```
 
-</details>
 
 ## <a name="tests"></a>Tests
 | Coverage Test Results 											| Unit Test Run											   |
